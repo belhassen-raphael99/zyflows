@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="zygrad" x1="16" y1="16" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2dd4bf" />
+      <stop offset="1" stop-color="#5eead4" />
+    </linearGradient>
+  </defs>
+
+  <!-- No background: true transparency -->
+  <path
+    fill="url(#zygrad)"
+    d="M26 30h76a6 6 0 0 1 4.6 9.9L55.7 92H102a6 6 0 0 1 0 12H26a6 6 0 0 1-4.6-9.9L72.3 42H26a6 6 0 0 1 0-12z"
+  />
+</svg>
