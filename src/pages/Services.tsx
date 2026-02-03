@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Search, Zap, Bot, Globe, ArrowLeft, ArrowRight, CheckCircle, Workflow, Database, MessageSquare, BarChart3 } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import GlassCard from '@/components/ui/GlassCard';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -81,10 +82,11 @@ const Services = () => {
 
   return (
     <Layout>
+      <SEO titleKey="meta.services.title" descriptionKey="meta.services.description" />
       {/* Hero */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-        
+
         <div className="container mx-auto px-6">
           <AnimatedSection className="max-w-4xl mx-auto text-center">
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">

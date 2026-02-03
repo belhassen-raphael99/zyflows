@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 // Language types and context for internationalization
 export type Language = 'he' | 'fr' | 'en';
@@ -15,7 +16,7 @@ const updateDocumentDirection = (lang: Language) => {
   const dir = lang === 'he' ? 'rtl' : 'ltr';
   document.documentElement.setAttribute('dir', dir);
   document.documentElement.setAttribute('lang', lang);
-  
+
   // Remove all language classes and add current one
   document.body.classList.remove('lang-he', 'lang-fr', 'lang-en');
   document.body.classList.add(`lang-${lang}`);
@@ -30,7 +31,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.pricing': 'חבילות',
     'nav.contact': 'צור קשר',
     'nav.cta': 'קבלו ייעוץ חינם',
-    
+
     // Hero Section
     'hero.badge': '🚀 הדור הבא של האוטומציה העסקית',
     'hero.title1': 'הפכו את העסק שלכם עם',
@@ -38,7 +39,17 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.subtitle': 'תפסיקו לבזבז זמן. אנחנו בונים מערכות שעובדות 24/7, מייעלות תהליכים, ומגדילות את הרווחים שלכם.',
     'hero.cta1': 'קבלו אבחון חינם',
     'hero.cta2': 'גלו את השירותים שלנו',
-    
+
+    // SEO
+    'meta.home.title': 'Zyflows | פתרונות אוטומציה ו-AI',
+    'meta.home.description': 'סוכנות לאוטומציה עסקית בינה מלאכותית. אנו בונים מערכות חכמות לייעול תהליכים, חיסכון בזמן והגדלת רווחים.',
+    'meta.about.title': 'אודות Zyflows | המומחים לאוטומציה',
+    'meta.about.description': 'הכירו את Zyflows ואת המייסד רפאל. מומחים באוטומציה עסקית ופיתוח פתרונות דיגיטליים חכמים.',
+    'meta.services.title': 'השירותים שלנו | Zyflows',
+    'meta.services.description': 'אוטומציה, צ\'אטבוטים, פתרונות ווב ועוד. גלו איך אנחנו יכולים לשדרג את העסק שלכם.',
+    'meta.contact.title': 'צור קשר | Zyflows',
+    'meta.contact.description': 'מוכנים להתקדם? צרו איתנו קשר לייעוץ בנושאי אוטומציה ופיתוח עסקי.',
+
     // Services Section (Index)
     'services.title': 'פתרונות לצמיחה עסקית',
     'services.subtitle': 'אנחנו מציעים מגוון שירותים שיעזרו לעסק שלכם לצמוח ולהתייעל',
@@ -51,7 +62,7 @@ const translations: Record<Language, Record<string, string>> = {
     'services.chatbots.desc': 'בוטים חכמים שמטפלים בלקוחות ומגדילים מכירות.',
     'services.web.title': 'פתרונות ווב',
     'services.web.desc': 'אתרים ומערכות ווב מתקדמות לעסק שלכם.',
-    
+
     // Process Section
     'process.title': 'איך זה עובד?',
     'process.subtitle': 'תהליך פשוט ויעיל שמוביל לתוצאות מדהימות',
@@ -61,7 +72,7 @@ const translations: Record<Language, Record<string, string>> = {
     'process.step2.desc': 'מפתחים ומטמיעים פתרונות אוטומציה מותאמים אישית.',
     'process.step3.title': 'צמיחה',
     'process.step3.desc': 'מרחיבים ומשפרים בהתאם לצרכים המתפתחים של העסק.',
-    
+
     // Pricing Section
     'pricing.title': 'חבילות תמיכה ותחזוקה',
     'pricing.subtitle': 'בחרו את החבילה שמתאימה לצרכים שלכם',
@@ -88,7 +99,7 @@ const translations: Record<Language, Record<string, string>> = {
     'pricing.feature.dedicatedManager': 'מנהל לקוח ייעודי',
     'pricing.feature.customDev': 'פיתוחים מותאמים',
     'pricing.feature.personalTraining': 'הדרכות אישיות',
-    
+
     // Contact Section
     'contact.title': 'בואו נדבר',
     'contact.subtitle': 'יש לכם שאלות? רוצים לדעת איך אנחנו יכולים לעזור לעסק שלכם? השאירו פרטים ונחזור אליכם תוך 24 שעות.',
@@ -115,7 +126,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.topicOther': 'אחר',
     'contact.form.responseTime': 'נחזור אליכם תוך 24 שעות עסקים',
     'contact.form.sendRequest': 'שלחו פנייה',
-    
+
     // Contact Info
     'contact.email': 'אימייל',
     'contact.phone': 'טלפון',
@@ -134,7 +145,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.heroTitle': 'בואו',
     'contact.heroTitle2': 'נדבר',
     'contact.heroSubtitle': 'יש לכם שאלות? רוצים לדעת איך אנחנו יכולים לעזור? אנחנו כאן בשבילכם.',
-    
+
     // Footer
     'footer.company': 'החברה',
     'footer.services': 'שירותים',
@@ -152,7 +163,7 @@ const translations: Record<Language, Record<string, string>> = {
     'creator.phone': 'טלפון',
     'creator.whatsapp': 'וואטסאפ',
     'creator.linkedin': 'לינקדאין',
-    
+
     // About Page
     'about.badge': 'אודות Zyflows',
     'about.heroTitle': 'הפיכת תהליכים מורכבים למערכות פשוטות, אוטומטיות ואמינות',
@@ -215,7 +226,7 @@ const translations: Record<Language, Record<string, string>> = {
     'about.ctaButton1': 'קבעו שיחת ייעוץ',
     'about.ctaButton2': 'או צרו קשר דרך הטופס',
     'about.ctaNote': 'גם אם לא נעבוד יחד, תצא עם ראייה ברורה יותר.',
-    
+
     // Services Page
     'servicesPage.badge': 'השירותים שלנו',
     'servicesPage.heroTitle1': 'פתרונות',
@@ -260,7 +271,7 @@ const translations: Record<Language, Record<string, string>> = {
     'servicesPage.ctaTitle': 'לא בטוחים מאיפה להתחיל?',
     'servicesPage.ctaSubtitle': 'התחילו עם אבחון חינם. נבין יחד את הצרכים שלכם ונמליץ על הפתרונות המתאימים ביותר.',
     'servicesPage.ctaButton': 'קבלו אבחון חינם',
-    
+
     // Pricing Page
     'pricingPage.badge': 'תמחור שקוף',
     'pricingPage.heroTitle1': 'חבילות',
@@ -286,7 +297,7 @@ const translations: Record<Language, Record<string, string>> = {
     'pricingPage.faq3.a': 'אפשר לרכוש שעות נוספות בנפרד, או לשדרג לחבילה גדולה יותר. נמליץ לכם על האופציה המשתלמת ביותר.',
     'pricingPage.faq4.q': 'האם יש התחייבות?',
     'pricingPage.faq4.a': 'אין התחייבות לתקופה מינימלית. אפשר לבטל בכל זמן עם התראה של 30 יום.',
-    
+
     // Chatbot
     'chatbot.title': 'עוזר Zyflows',
     'chatbot.online': 'מחובר',
@@ -294,7 +305,7 @@ const translations: Record<Language, Record<string, string>> = {
     'chatbot.placeholder': 'כתבו את ההודעה שלכם...',
     'chatbot.close': 'סגור צ\'אט',
     'chatbot.send': 'שלח',
-    
+
     // Language
     'language': 'שפה',
   },
@@ -306,7 +317,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.pricing': 'Tarifs',
     'nav.contact': 'Contact',
     'nav.cta': 'Consultation gratuite',
-    
+
     // Hero Section
     'hero.badge': '🚀 La nouvelle génération de l\'automatisation',
     'hero.title1': 'Transformez votre entreprise avec',
@@ -314,7 +325,17 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.subtitle': 'Arrêtez de perdre du temps. Nous construisons des systèmes qui fonctionnent 24/7, optimisent les processus et augmentent vos profits.',
     'hero.cta1': 'Diagnostic gratuit',
     'hero.cta2': 'Découvrez nos services',
-    
+
+    // SEO
+    'meta.home.title': 'Zyflows | Solutions d\'Automatisation IA',
+    'meta.home.description': 'Solutions d\'Automatisation IA & Lead Generation. Nous construisons des systèmes intelligents pour optimiser vos processus.',
+    'meta.about.title': 'À propos de Zyflows | Experts en Automatisation',
+    'meta.about.description': 'Découvrez Zyflows et son fondateur Raphaël. Experts en automatisation business et solutions digitales.',
+    'meta.services.title': 'Nos Services | Zyflows',
+    'meta.services.description': 'Automatisation, Chatbots, Solutions Web et plus. Découvrez comment nous pouvons transformer votre entreprise.',
+    'meta.contact.title': 'Contact | Zyflows',
+    'meta.contact.description': 'Prêt à passer à la vitesse supérieure ? Contactez-nous pour une consultation sur l\'automatisation de votre business.',
+
     // Services Section (Index)
     'services.title': 'Solutions pour la croissance',
     'services.subtitle': 'Nous offrons une gamme de services pour aider votre entreprise à croître et s\'optimiser',
@@ -327,7 +348,7 @@ const translations: Record<Language, Record<string, string>> = {
     'services.chatbots.desc': 'Des bots intelligents qui gèrent vos clients et augmentent les ventes.',
     'services.web.title': 'Solutions Web',
     'services.web.desc': 'Sites et systèmes web avancés pour votre entreprise.',
-    
+
     // Process Section
     'process.title': 'Comment ça marche?',
     'process.subtitle': 'Un processus simple et efficace qui mène à des résultats exceptionnels',
@@ -337,7 +358,7 @@ const translations: Record<Language, Record<string, string>> = {
     'process.step2.desc': 'Nous développons et implémentons des solutions d\'automatisation personnalisées.',
     'process.step3.title': 'Croissance',
     'process.step3.desc': 'Nous étendons et améliorons selon les besoins évolutifs de l\'entreprise.',
-    
+
     // Pricing Section
     'pricing.title': 'Forfaits support et maintenance',
     'pricing.subtitle': 'Choisissez le forfait adapté à vos besoins',
@@ -364,7 +385,7 @@ const translations: Record<Language, Record<string, string>> = {
     'pricing.feature.dedicatedManager': 'Manager client dédié',
     'pricing.feature.customDev': 'Développements personnalisés',
     'pricing.feature.personalTraining': 'Formations personnelles',
-    
+
     // Contact Section
     'contact.title': 'Parlons ensemble',
     'contact.subtitle': 'Des questions? Vous voulez savoir comment nous pouvons aider votre entreprise? Laissez vos coordonnées et nous vous recontacterons sous 24h.',
@@ -391,7 +412,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.topicOther': 'Autre',
     'contact.form.responseTime': 'Nous vous répondrons sous 24h ouvrées',
     'contact.form.sendRequest': 'Envoyer la demande',
-    
+
     // Contact Info
     'contact.email': 'Email',
     'contact.phone': 'Téléphone',
@@ -410,7 +431,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.heroTitle': 'Parlons',
     'contact.heroTitle2': 'ensemble',
     'contact.heroSubtitle': 'Des questions? Vous voulez savoir comment nous pouvons vous aider? Nous sommes là pour vous.',
-    
+
     // Footer
     'footer.company': 'Entreprise',
     'footer.services': 'Services',
@@ -428,7 +449,7 @@ const translations: Record<Language, Record<string, string>> = {
     'creator.phone': 'Téléphone',
     'creator.whatsapp': 'WhatsApp',
     'creator.linkedin': 'LinkedIn',
-    
+
     // About Page
     'about.badge': 'À propos de Zyflows',
     'about.heroTitle': 'Transformer des processus complexes en systèmes simples, automatisés et fiables',
@@ -491,7 +512,7 @@ const translations: Record<Language, Record<string, string>> = {
     'about.ctaButton1': 'Réserver une consultation',
     'about.ctaButton2': 'Ou me contacter via le formulaire',
     'about.ctaNote': 'Même si on ne travaille pas ensemble, tu repartiras avec une vision plus claire.',
-    
+
     // Services Page
     'servicesPage.badge': 'Nos services',
     'servicesPage.heroTitle1': 'Solutions',
@@ -536,7 +557,7 @@ const translations: Record<Language, Record<string, string>> = {
     'servicesPage.ctaTitle': 'Vous ne savez pas par où commencer?',
     'servicesPage.ctaSubtitle': 'Commencez par un diagnostic gratuit. Nous comprendrons ensemble vos besoins et vous recommanderons les meilleures solutions.',
     'servicesPage.ctaButton': 'Diagnostic gratuit',
-    
+
     // Pricing Page
     'pricingPage.badge': 'Tarification transparente',
     'pricingPage.heroTitle1': 'Forfaits',
@@ -562,7 +583,7 @@ const translations: Record<Language, Record<string, string>> = {
     'pricingPage.faq3.a': 'Vous pouvez acheter des heures supplémentaires séparément, ou upgrader vers un forfait plus important. Nous vous recommanderons l\'option la plus avantageuse.',
     'pricingPage.faq4.q': 'Y a-t-il un engagement?',
     'pricingPage.faq4.a': 'Aucun engagement minimum. Vous pouvez annuler à tout moment avec un préavis de 30 jours.',
-    
+
     // Chatbot
     'chatbot.title': 'Assistant ZyFlows',
     'chatbot.online': 'En ligne',
@@ -570,7 +591,7 @@ const translations: Record<Language, Record<string, string>> = {
     'chatbot.placeholder': 'Écrivez votre message...',
     'chatbot.close': 'Fermer le chat',
     'chatbot.send': 'Envoyer',
-    
+
     // Language
     'language': 'Langue',
   },
@@ -582,7 +603,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.pricing': 'Pricing',
     'nav.contact': 'Contact',
     'nav.cta': 'Free Consultation',
-    
+
     // Hero Section
     'hero.badge': '🚀 The next generation of business automation',
     'hero.title1': 'Transform your business with',
@@ -590,7 +611,17 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.subtitle': 'Stop wasting time. We build systems that work 24/7, streamline processes, and increase your profits.',
     'hero.cta1': 'Get a free diagnosis',
     'hero.cta2': 'Discover our services',
-    
+
+    // SEO
+    'meta.home.title': 'Zyflows | AI Automation Solutions',
+    'meta.home.description': 'AI Automation Solutions & Lead Generation. We build smart systems to streamline processes and boost growth.',
+    'meta.about.title': 'About Zyflows | Automation Experts',
+    'meta.about.description': 'Meet Zyflows and founder Raphaël. Experts in business automation and smart digital solutions.',
+    'meta.services.title': 'Our Services | Zyflows',
+    'meta.services.description': 'Automation, Chatbots, Web Solutions and more. Discover how we can upgrade your business.',
+    'meta.contact.title': 'Contact Us | Zyflows',
+    'meta.contact.description': 'Ready to move forward? Contact us for a consultation on business automation and development.',
+
     // Services Section (Index)
     'services.title': 'Solutions for business growth',
     'services.subtitle': 'We offer a range of services to help your business grow and optimize',
@@ -603,7 +634,7 @@ const translations: Record<Language, Record<string, string>> = {
     'services.chatbots.desc': 'Smart bots that handle customers and increase sales.',
     'services.web.title': 'Web Solutions',
     'services.web.desc': 'Advanced websites and web systems for your business.',
-    
+
     // Process Section
     'process.title': 'How does it work?',
     'process.subtitle': 'A simple and efficient process that leads to amazing results',
@@ -613,7 +644,7 @@ const translations: Record<Language, Record<string, string>> = {
     'process.step2.desc': 'We develop and implement customized automation solutions.',
     'process.step3.title': 'Growth',
     'process.step3.desc': 'We expand and improve according to the evolving business needs.',
-    
+
     // Pricing Section
     'pricing.title': 'Support & Maintenance Packages',
     'pricing.subtitle': 'Choose the package that fits your needs',
@@ -640,7 +671,7 @@ const translations: Record<Language, Record<string, string>> = {
     'pricing.feature.dedicatedManager': 'Dedicated account manager',
     'pricing.feature.customDev': 'Custom development',
     'pricing.feature.personalTraining': 'Personal training',
-    
+
     // Contact Section
     'contact.title': 'Let\'s Talk',
     'contact.subtitle': 'Have questions? Want to know how we can help your business? Leave your details and we\'ll get back to you within 24 hours.',
@@ -667,7 +698,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.topicOther': 'Other',
     'contact.form.responseTime': 'We\'ll respond within 24 business hours',
     'contact.form.sendRequest': 'Send Request',
-    
+
     // Contact Info
     'contact.email': 'Email',
     'contact.phone': 'Phone',
@@ -686,7 +717,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.heroTitle': 'Let\'s',
     'contact.heroTitle2': 'Talk',
     'contact.heroSubtitle': 'Have questions? Want to know how we can help? We\'re here for you.',
-    
+
     // Footer
     'footer.company': 'Company',
     'footer.services': 'Services',
@@ -704,7 +735,7 @@ const translations: Record<Language, Record<string, string>> = {
     'creator.phone': 'Phone',
     'creator.whatsapp': 'WhatsApp',
     'creator.linkedin': 'LinkedIn',
-    
+
     // About Page
     'about.badge': 'About Zyflows',
     'about.heroTitle': 'Transforming complex processes into simple, automated and reliable systems',
@@ -767,7 +798,7 @@ const translations: Record<Language, Record<string, string>> = {
     'about.ctaButton1': 'Book a consultation',
     'about.ctaButton2': 'Or contact me via the form',
     'about.ctaNote': 'Even if we don\'t work together, you\'ll leave with a clearer vision.',
-    
+
     // Services Page
     'servicesPage.badge': 'Our Services',
     'servicesPage.heroTitle1': 'End-to-end',
@@ -812,7 +843,7 @@ const translations: Record<Language, Record<string, string>> = {
     'servicesPage.ctaTitle': 'Not sure where to start?',
     'servicesPage.ctaSubtitle': 'Start with a free diagnosis. We\'ll understand your needs together and recommend the best solutions.',
     'servicesPage.ctaButton': 'Get a free diagnosis',
-    
+
     // Pricing Page
     'pricingPage.badge': 'Transparent Pricing',
     'pricingPage.heroTitle1': 'Support &',
@@ -838,7 +869,7 @@ const translations: Record<Language, Record<string, string>> = {
     'pricingPage.faq3.a': 'You can purchase additional hours separately, or upgrade to a larger package. We\'ll recommend the most cost-effective option for you.',
     'pricingPage.faq4.q': 'Is there a commitment?',
     'pricingPage.faq4.a': 'No minimum commitment. You can cancel at any time with 30 days notice.',
-    
+
     // Chatbot
     'chatbot.title': 'ZyFlows Assistant',
     'chatbot.online': 'Online',
@@ -846,7 +877,7 @@ const translations: Record<Language, Record<string, string>> = {
     'chatbot.placeholder': 'Type your message...',
     'chatbot.close': 'Close chat',
     'chatbot.send': 'Send',
-    
+
     // Language
     'language': 'Language',
   },
@@ -855,22 +886,59 @@ const translations: Record<Language, Record<string, string>> = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Initialize language from URL or localStorage or default
   const [language, setLanguageState] = useState<Language>(() => {
+    // Check URL first
+    const pathSegments = window.location.pathname.split('/').filter(Boolean);
+    const firstSegment = pathSegments[0] as Language;
+    if (['he', 'fr', 'en'].includes(firstSegment)) {
+      return firstSegment;
+    }
+
+    // Fallback to localStorage
     const saved = localStorage.getItem('zyflows-language');
-    return (saved as Language) || 'he';
+    if (saved && ['he', 'fr', 'en'].includes(saved)) {
+      return saved as Language;
+    }
+
+    return 'he';
   });
 
+  // Sync state with URL changes
+  useEffect(() => {
+    const pathSegments = location.pathname.split('/').filter(Boolean);
+    const urlLang = pathSegments[0] as Language;
+
+    if (['he', 'fr', 'en'].includes(urlLang) && urlLang !== language) {
+      setLanguageState(urlLang);
+    }
+  }, [location.pathname]);
+
+  // Update URL when language changes via setLanguage
   const setLanguage = (lang: Language) => {
+    if (lang === language) return;
+
     setLanguageState(lang);
     localStorage.setItem('zyflows-language', lang);
-    
-    // Update document direction and lang
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+
+    // Update URL: replace the language segment
+    const currentPath = location.pathname;
+    // Remove existing lang prefix if present
+    const cleanPath = currentPath.replace(/^\/(he|fr|en)/, '');
+    // Ensure cleanPath starts with / if it's not empty, or is just /
+    const normalizedPath = cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`;
+
+    // New path - handle root case carefully
+    const newPath = `/${lang}${normalizedPath === '/' ? '' : normalizedPath}`;
+
+    navigate(newPath);
   };
 
   const t = (key: string): string => {
-    return translations[language][key] || key;
+    return translations[language]?.[key] || key;
   };
 
   const dir = language === 'he' ? 'rtl' : 'ltr';

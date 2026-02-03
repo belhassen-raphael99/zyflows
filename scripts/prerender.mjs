@@ -9,19 +9,29 @@ const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
 const distDir = path.join(projectRoot, "dist");
 
-// Liste des routes importantes à pré-rendre pour le SEO.
-// Détecté à partir de `src/App.tsx` et des fichiers dans `src/pages`.
-// Tu peux ajouter / supprimer des entrées manuellement si besoin.
-const routesToPrerender = [
-  "/",
-  "/about",
-  "/services",
-  "/pricing",
-  "/contact",
-  "/terms",
-  "/accessibility",
-  "/privacy",
+// Languages supported
+const languages = ['he', 'fr', 'en'];
+
+// Pages to prerender (relative to language root)
+const pages = [
+  "", // for index (e.g. /he)
+  "about",
+  "services",
+  "pricing",
+  "contact",
+  "terms",
+  "accessibility",
+  "privacy",
 ];
+
+// Generate all routes
+const routesToPrerender = ["/"]; // Add root
+languages.forEach(lang => {
+  pages.forEach(page => {
+    const route = page ? `/${lang}/${page}` : `/${lang}`;
+    routesToPrerender.push(route);
+  });
+});
 
 async function waitFor(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -68,6 +78,7 @@ function routeToFilename(route) {
   }
 
   const clean = route.replace(/^\/|\/$/g, "");
+  // e.g. "he/about" -> "he/about.html"
   return `${clean}.html`;
 }
 
@@ -119,6 +130,11 @@ async function prerender() {
       const html = await page.content();
       const filename = routeToFilename(route);
       const outputPath = path.join(distDir, filename);
+      const outputDir = path.dirname(outputPath);
+
+      if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+      }
 
       fs.writeFileSync(outputPath, html, "utf-8");
       console.log(`Saved prerendered HTML to ${path.relative(projectRoot, outputPath)}`);

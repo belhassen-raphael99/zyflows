@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Search, Bot, Globe, Zap, CheckCircle, MessageCircle } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import GlassCard from '@/components/ui/GlassCard';
 import HeroVideo from '@/components/ui/HeroVideo';
@@ -95,11 +96,13 @@ const Index = () => {
 
   return (
     <Layout>
+      <SEO titleKey="meta.home.title" descriptionKey="meta.home.description" />
+
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-        
+
         <div className="container mx-auto px-6 py-20">
           <AnimatedSection className="text-center max-w-4xl mx-auto">
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
@@ -186,7 +189,7 @@ const Index = () => {
           <div className="relative max-w-4xl mx-auto">
             {/* Animated Connection Line */}
             <div className="absolute top-1/2 right-0 left-0 h-1 hidden md:block -translate-y-1/2 overflow-hidden">
-              <div 
+              <div
                 className={`h-full bg-gradient-to-${dir === 'rtl' ? 'l' : 'r'} from-primary via-accent to-primary/30 animate-line-draw origin-${dir === 'rtl' ? 'right' : 'left'}`}
                 style={{ boxShadow: '0 0 20px hsl(var(--primary) / 0.5)' }}
               />
@@ -225,9 +228,8 @@ const Index = () => {
             {pricingPlans.map((plan, index) => (
               <AnimatedSection key={plan.name} delay={index * 100}>
                 <GlassCard
-                  className={`h-full relative ${
-                    plan.popular ? 'border-primary/50' : ''
-                  }`}
+                  className={`h-full relative ${plan.popular ? 'border-primary/50' : ''
+                    }`}
                   hover={true}
                   tilt={true}
                   glow={plan.popular}
@@ -251,11 +253,10 @@ const Index = () => {
                   </ul>
                   <Link
                     to="/contact"
-                    className={`block w-full text-center py-3 rounded-xl font-medium transition-all ${
-                      plan.popular
-                        ? 'glow-button'
-                        : 'glow-button-outline'
-                    }`}
+                    className={`block w-full text-center py-3 rounded-xl font-medium transition-all ${plan.popular
+                      ? 'glow-button'
+                      : 'glow-button-outline'
+                      }`}
                   >
                     {t('pricing.contactUs')}
                   </Link>

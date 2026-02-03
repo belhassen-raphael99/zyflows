@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { 
-  Shield, 
-  Zap, 
-  Code, 
-  Bot, 
-  Globe, 
-  Quote, 
-  Calendar, 
+import {
+  Shield,
+  Zap,
+  Code,
+  Bot,
+  Globe,
+  Quote,
+  Calendar,
   Mail,
   Check,
   Search,
@@ -19,6 +19,7 @@ import {
   GraduationCap
 } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -62,6 +63,7 @@ const About = () => {
 
   return (
     <Layout>
+      <SEO titleKey="meta.about.title" descriptionKey="meta.about.description" />
       {/* Hero */}
       <section className="relative py-32 overflow-hidden">
         <div className="container mx-auto px-6">
@@ -317,8 +319,8 @@ const About = () => {
                 <Calendar className="w-4 h-4" strokeWidth={1.5} />
                 {t('about.ctaButton1')}
               </Link>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className="inline-flex items-center justify-center gap-3 px-6 py-3 border border-primary/40 text-primary hover:bg-primary/10 transition-colors"
               >
                 <Mail className="w-4 h-4" strokeWidth={1.5} />
