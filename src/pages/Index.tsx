@@ -10,6 +10,7 @@ import { CONTACT_INFO } from '@/lib/contact';
 
 const Index = () => {
   const { t, language, dir } = useLanguage();
+  const langPrefix = `/${language}`;
   const ArrowIcon = dir === 'rtl' ? ArrowLeft : ArrowRight;
 
   const services = [
@@ -116,10 +117,10 @@ const Index = () => {
               {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="glow-button animate-pulse-glow">
+              <Link to={`${langPrefix}/contact`} className="glow-button animate-pulse-glow">
                 {t('hero.cta1')}
               </Link>
-              <Link to="/services" className="glow-button-outline flex items-center justify-center gap-2">
+              <Link to={`${langPrefix}/services`} className="glow-button-outline flex items-center justify-center gap-2">
                 {t('hero.cta2')}
                 <ArrowIcon className="w-4 h-4" />
               </Link>
@@ -159,7 +160,7 @@ const Index = () => {
                       <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
                       <p className="text-muted-foreground mb-4">{service.description}</p>
                       <Link
-                        to="/services"
+                        to={`${langPrefix}/services`}
                         className="link-underline inline-flex items-center gap-2 text-primary hover:gap-3 transition-all text-sm font-medium"
                       >
                         {t('services.learnMore')}
@@ -188,10 +189,9 @@ const Index = () => {
 
           <div className="relative max-w-4xl mx-auto">
             {/* Animated Connection Line */}
-            <div className="absolute top-1/2 right-0 left-0 h-1 hidden md:block -translate-y-1/2 overflow-hidden">
+            <div className="absolute top-1/2 right-0 left-0 h-1 hidden md:block -translate-y-1/2 overflow-hidden" aria-hidden="true">
               <div
-                className={`h-full bg-gradient-to-${dir === 'rtl' ? 'l' : 'r'} from-primary via-accent to-primary/30 animate-line-draw origin-${dir === 'rtl' ? 'right' : 'left'}`}
-                style={{ boxShadow: '0 0 20px hsl(var(--primary) / 0.5)' }}
+                className={`h-full bg-gradient-to-${dir === 'rtl' ? 'l' : 'r'} from-primary via-accent to-primary/30 animate-line-draw origin-${dir === 'rtl' ? 'right' : 'left'} shadow-glow-primary`}
               />
             </div>
 
@@ -199,7 +199,7 @@ const Index = () => {
               {processSteps.map((step, index) => (
                 <AnimatedSection key={step.step} delay={index * 150}>
                   <div className="text-center relative">
-                    <div className="w-20 h-20 rounded-full bg-background border-2 border-primary mx-auto mb-6 flex items-center justify-center relative z-10" style={{ boxShadow: '0 0 30px hsl(var(--primary) / 0.4)' }}>
+                    <div className="w-20 h-20 rounded-full bg-background border-2 border-primary mx-auto mb-6 flex items-center justify-center relative z-10 shadow-glow-primary-lg">
                       <span className="text-2xl font-bold gradient-text">{step.step}</span>
                     </div>
                     <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
@@ -252,7 +252,7 @@ const Index = () => {
                     ))}
                   </ul>
                   <Link
-                    to="/contact"
+                    to={`${langPrefix}/contact`}
                     className={`block w-full text-center py-3 rounded-xl font-medium transition-all ${plan.popular
                       ? 'glow-button'
                       : 'glow-button-outline'

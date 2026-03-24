@@ -1,25 +1,32 @@
+import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import GlassCard from '@/components/ui/GlassCard';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Terms = () => {
+  const { t, language } = useLanguage();
+  const langPrefix = `/${language}`;
+
   return (
     <Layout>
+      <SEO titleKey="meta.terms.title" descriptionKey="meta.terms.description" />
       {/* Hero */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-        
+
         <div className="container mx-auto px-6">
           <AnimatedSection className="max-w-4xl mx-auto text-center">
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              מסמכים משפטיים
+              {t('terms.badge')}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              תנאים{' '}
-              <span className="gradient-text">והגבלות</span>
+              {t('terms.title')}{' '}
+              <span className="gradient-text">{t('terms.titleGradient')}</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              עדכון אחרון: ינואר 2025
+              {t('terms.updated')}
             </p>
           </AnimatedSection>
         </div>
@@ -29,11 +36,11 @@ const Terms = () => {
       <section className="py-12 pb-24">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto space-y-8">
-            
+
             {/* Section 1 */}
             <AnimatedSection>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">1. כללי</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s1.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
                     ברוכים הבאים ל-Zyflows (להלן: "החברה", "אנחנו"). תנאי שימוש אלו מסדירים את היחסים בינך (להלן: "הלקוח", "אתה") לבין החברה בכל הנוגע לשירותים המוצעים על ידינו.
@@ -48,7 +55,7 @@ const Terms = () => {
             {/* Section 2 */}
             <AnimatedSection delay={50}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">2. תיאור השירותים</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s2.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>החברה מספקת שירותי אוטומציה ובינה מלאכותית לעסקים, הכוללים:</p>
                   <ul className="list-disc list-inside space-y-2 mr-4">
@@ -65,7 +72,7 @@ const Terms = () => {
             {/* Section 3 */}
             <AnimatedSection delay={100}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">3. תהליך העבודה</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s3.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>העבודה מול הלקוח מתבצעת בשלבים הבאים:</p>
                   <ol className="list-decimal list-inside space-y-3 mr-4">
@@ -84,7 +91,7 @@ const Terms = () => {
             {/* Section 4 */}
             <AnimatedSection delay={150}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">4. תנאי תשלום</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s4.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <ul className="list-disc list-inside space-y-2 mr-4">
                     <li>המחירים המצוינים הם בשקלים חדשים ואינם כוללים מע"מ</li>
@@ -101,7 +108,7 @@ const Terms = () => {
             {/* Section 5 */}
             <AnimatedSection delay={200}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">5. מדיניות החזרים וביטולים</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s5.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <ul className="list-disc list-inside space-y-2 mr-4">
                     <li>ביטול לפני תחילת העבודה: החזר מלא פחות 10% דמי טיפול</li>
@@ -117,7 +124,7 @@ const Terms = () => {
             {/* Section 6 */}
             <AnimatedSection delay={250}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">6. אחריות ותמיכה</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s6.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <ul className="list-disc list-inside space-y-2 mr-4">
                     <li>30 יום אחריות על תיקון באגים לאחר השקה</li>
@@ -133,7 +140,7 @@ const Terms = () => {
             {/* Section 7 */}
             <AnimatedSection delay={300}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">7. שירותי ריטיינר</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s7.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>שירותי הריטיינר כוללים:</p>
                   <div className="overflow-x-auto mt-4">
@@ -172,7 +179,7 @@ const Terms = () => {
             {/* Section 8 */}
             <AnimatedSection delay={350}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">8. מערכות וכלים של צד שלישי</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s8.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>במהלך העבודה אנו משתמשים בכלים ושירותים חיצוניים. הלקוח מאשר כי:</p>
                   <ul className="list-disc list-inside space-y-2 mr-4">
@@ -188,13 +195,13 @@ const Terms = () => {
             {/* Section 9 */}
             <AnimatedSection delay={400}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">9. פרטיות וסודיות</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s9.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <ul className="list-disc list-inside space-y-2 mr-4">
                     <li>אנו מתחייבים לשמור על סודיות מלאה של מידע עסקי</li>
                     <li>לא נשתף מידע עם צדדים שלישיים ללא אישור</li>
                     <li>המידע ישמש אך ורק לצורך מתן השירותים</li>
-                    <li>לפרטים מלאים, ראו את <a href="/privacy" className="text-primary hover:underline">מדיניות הפרטיות</a></li>
+                    <li>לפרטים מלאים, ראו את <Link to={`${langPrefix}/privacy`} className="text-primary hover:underline">מדיניות הפרטיות</Link></li>
                   </ul>
                 </div>
               </GlassCard>
@@ -203,7 +210,7 @@ const Terms = () => {
             {/* Section 10 */}
             <AnimatedSection delay={450}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">10. קניין רוחני</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s10.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <ul className="list-disc list-inside space-y-2 mr-4">
                     <li>עם השלמת התשלום המלא, זכויות הקוד המותאם עוברות ללקוח</li>
@@ -218,7 +225,7 @@ const Terms = () => {
             {/* Section 11 */}
             <AnimatedSection delay={500}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">11. הצגת תוצאות</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s11.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <ul className="list-disc list-inside space-y-2 mr-4">
                     <li>אנו שואפים לתוצאות מיטביות אך אין ערבות לתוצאות עסקיות ספציפיות</li>
@@ -233,7 +240,7 @@ const Terms = () => {
             {/* Section 12 */}
             <AnimatedSection delay={550}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">12. שינויים בשירות</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s12.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <ul className="list-disc list-inside space-y-2 mr-4">
                     <li>שינויים בהיקף הפרויקט יתומחרו בנפרד</li>
@@ -248,7 +255,7 @@ const Terms = () => {
             {/* Section 13 */}
             <AnimatedSection delay={600}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">13. סיום התקשרות</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s13.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <ul className="list-disc list-inside space-y-2 mr-4">
                     <li>כל צד רשאי לסיים את ההתקשרות בהודעה בכתב</li>
@@ -263,7 +270,7 @@ const Terms = () => {
             {/* Section 14 */}
             <AnimatedSection delay={650}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">14. סמכות שיפוט ודין חל</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('terms.s14.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <ul className="list-disc list-inside space-y-2 mr-4">
                     <li>תנאים אלו כפופים לחוקי מדינת ישראל</li>
@@ -277,12 +284,12 @@ const Terms = () => {
             {/* Contact */}
             <AnimatedSection delay={700}>
               <GlassCard hover={false} className="p-8 bg-primary/5">
-                <h2 className="text-2xl font-bold mb-4">שאלות?</h2>
+                <h2 className="text-2xl font-bold mb-4">{t('terms.contactTitle')}</h2>
                 <p className="text-muted-foreground mb-4">
                   לשאלות בנוגע לתנאים אלו, ניתן לפנות אלינו:
                 </p>
-                <a 
-                  href="mailto:contact.zyflows@gmail.com" 
+                <a
+                  href="mailto:contact.zyflows@gmail.com"
                   className="text-primary hover:underline font-medium"
                 >
                   contact.zyflows@gmail.com

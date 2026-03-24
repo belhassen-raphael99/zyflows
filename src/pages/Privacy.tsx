@@ -1,39 +1,44 @@
 import Layout from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import GlassCard from '@/components/ui/GlassCard';
 import { Shield, Lock, Eye, Database, Clock, Bot, Bell, UserCheck, FileText, Mail } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Privacy = () => {
+  const { t } = useLanguage();
+
   const sections = [
-    { icon: FileText, title: 'מבוא', id: 'intro' },
-    { icon: Database, title: 'איסוף מידע', id: 'collection' },
-    { icon: Eye, title: 'שימוש במידע', id: 'usage' },
-    { icon: Lock, title: 'אבטחת מידע', id: 'security' },
-    { icon: Shield, title: 'כלים של צד שלישי', id: 'thirdparty' },
-    { icon: UserCheck, title: 'זכויות הלקוח', id: 'rights' },
-    { icon: Clock, title: 'תקופות שמירה', id: 'retention' },
-    { icon: Bot, title: 'שיחות עם AI Agent', id: 'ai' },
-    { icon: Bell, title: 'עדכוני מדיניות', id: 'updates' },
-    { icon: Mail, title: 'יצירת קשר', id: 'contact' },
+    { icon: FileText, title: t('privacy.nav.intro'), id: 'intro' },
+    { icon: Database, title: t('privacy.nav.collection'), id: 'collection' },
+    { icon: Eye, title: t('privacy.nav.usage'), id: 'usage' },
+    { icon: Lock, title: t('privacy.nav.security'), id: 'security' },
+    { icon: Shield, title: t('privacy.nav.thirdparty'), id: 'thirdparty' },
+    { icon: UserCheck, title: t('privacy.nav.rights'), id: 'rights' },
+    { icon: Clock, title: t('privacy.nav.retention'), id: 'retention' },
+    { icon: Bot, title: t('privacy.nav.ai'), id: 'ai' },
+    { icon: Bell, title: t('privacy.nav.updates'), id: 'updates' },
+    { icon: Mail, title: t('privacy.nav.contact'), id: 'contact' },
   ];
 
   return (
     <Layout>
+      <SEO titleKey="meta.privacy.title" descriptionKey="meta.privacy.description" />
       {/* Hero */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-        
+
         <div className="container mx-auto px-6">
           <AnimatedSection className="max-w-4xl mx-auto text-center">
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              פרטיות
+              {t('privacy.badge')}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              מדיניות{' '}
-              <span className="gradient-text">פרטיות</span>
+              {t('privacy.title')}{' '}
+              <span className="gradient-text">{t('privacy.titleGradient')}</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              עדכון אחרון: ינואר 2025
+              {t('privacy.updated')}
             </p>
           </AnimatedSection>
         </div>
@@ -44,7 +49,7 @@ const Privacy = () => {
         <div className="container mx-auto px-6">
           <AnimatedSection className="max-w-4xl mx-auto">
             <GlassCard hover={false} className="p-6">
-              <h2 className="text-lg font-semibold mb-4">ניווט מהיר</h2>
+              <h2 className="text-lg font-semibold mb-4">{t('privacy.nav.title')}</h2>
               <div className="flex flex-wrap gap-2">
                 {sections.map((section) => (
                   <a
@@ -66,7 +71,7 @@ const Privacy = () => {
       <section className="py-12 pb-24">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto space-y-8">
-            
+
             {/* Section 1 - Introduction */}
             <AnimatedSection>
               <GlassCard hover={false} className="p-8" id="intro">
@@ -74,7 +79,7 @@ const Privacy = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <FileText className="w-5 h-5 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-primary">1. מבוא</h2>
+                  <h2 className="text-2xl font-bold text-primary">{t('privacy.s1.title')}</h2>
                 </div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
@@ -94,7 +99,7 @@ const Privacy = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Database className="w-5 h-5 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-primary">2. איסוף מידע</h2>
+                  <h2 className="text-2xl font-bold text-primary">{t('privacy.s2.title')}</h2>
                 </div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p><strong>מידע שאתם מספקים:</strong></p>
@@ -122,7 +127,7 @@ const Privacy = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Eye className="w-5 h-5 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-primary">3. שימוש במידע</h2>
+                  <h2 className="text-2xl font-bold text-primary">{t('privacy.s3.title')}</h2>
                 </div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>אנו משתמשים במידע שנאסף למטרות הבאות:</p>
@@ -145,7 +150,7 @@ const Privacy = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Lock className="w-5 h-5 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-primary">4. אבטחת מידע</h2>
+                  <h2 className="text-2xl font-bold text-primary">{t('privacy.s4.title')}</h2>
                 </div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>אנו נוקטים באמצעים להגנה על המידע שלכם:</p>
@@ -170,7 +175,7 @@ const Privacy = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Shield className="w-5 h-5 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-primary">5. כלים של צד שלישי</h2>
+                  <h2 className="text-2xl font-bold text-primary">{t('privacy.s5.title')}</h2>
                 </div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>אנו משתמשים בשירותים חיצוניים לצורך:</p>
@@ -194,7 +199,7 @@ const Privacy = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <UserCheck className="w-5 h-5 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-primary">6. זכויות הלקוח</h2>
+                  <h2 className="text-2xl font-bold text-primary">{t('privacy.s6.title')}</h2>
                 </div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>עומדות לכם הזכויות הבאות:</p>
@@ -207,7 +212,8 @@ const Privacy = () => {
                     <li><strong>זכות לניידות:</strong> לקבל את המידע בפורמט נפוץ</li>
                   </ul>
                   <p className="mt-4">
-                    לממוש זכויות אלו, פנו אלינו בכתובת: <a href="mailto:contact.zyflows@gmail.com" className="text-primary hover:underline">contact.zyflows@gmail.com</a>
+                    לממוש זכויות אלו, פנו אלינו בכתובת:{' '}
+                    <a href="mailto:contact.zyflows@gmail.com" className="text-primary hover:underline">contact.zyflows@gmail.com</a>
                   </p>
                 </div>
               </GlassCard>
@@ -220,7 +226,7 @@ const Privacy = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Clock className="w-5 h-5 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-primary">7. תקופות שמירה</h2>
+                  <h2 className="text-2xl font-bold text-primary">{t('privacy.s7.title')}</h2>
                 </div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>אנו שומרים מידע למשך הזמן הדרוש:</p>
@@ -244,7 +250,7 @@ const Privacy = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Bot className="w-5 h-5 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-primary">8. שיחות עם AI Agent</h2>
+                  <h2 className="text-2xl font-bold text-primary">{t('privacy.s8.title')}</h2>
                 </div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
@@ -270,7 +276,7 @@ const Privacy = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Bell className="w-5 h-5 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-primary">9. עדכוני מדיניות</h2>
+                  <h2 className="text-2xl font-bold text-primary">{t('privacy.s9.title')}</h2>
                 </div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
@@ -293,7 +299,7 @@ const Privacy = () => {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold">10. יצירת קשר</h2>
+                  <h2 className="text-2xl font-bold">{t('privacy.s10.title')}</h2>
                 </div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>

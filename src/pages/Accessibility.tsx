@@ -1,13 +1,17 @@
 import Layout from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import GlassCard from '@/components/ui/GlassCard';
 import { Check, Eye, Keyboard, MousePointer, Type, Palette } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Accessibility = () => {
+  const { t } = useLanguage();
+
   const features = [
     {
       icon: Type,
-      title: 'התאמות טקסט',
+      title: t('accessibility.feature1.title'),
       items: [
         'שינוי גודל גופן (הגדלה/הקטנה)',
         'שינוי סוג גופן לגופן קריא יותר',
@@ -17,7 +21,7 @@ const Accessibility = () => {
     },
     {
       icon: Palette,
-      title: 'צבעים וניגודיות',
+      title: t('accessibility.feature2.title'),
       items: [
         'מצב ניגודיות גבוהה',
         'היפוך צבעים',
@@ -27,7 +31,7 @@ const Accessibility = () => {
     },
     {
       icon: Eye,
-      title: 'הדגשות חזותיות',
+      title: t('accessibility.feature3.title'),
       items: [
         'הדגשת קישורים',
         'סמן מוגדל',
@@ -37,7 +41,7 @@ const Accessibility = () => {
     },
     {
       icon: Keyboard,
-      title: 'ניווט מקלדת',
+      title: t('accessibility.feature4.title'),
       items: [
         'ניווט מלא באמצעות מקלדת',
         'קיצורי מקשים',
@@ -47,7 +51,7 @@ const Accessibility = () => {
     },
     {
       icon: MousePointer,
-      title: 'תאימות קוראי מסך',
+      title: t('accessibility.feature5.title'),
       items: [
         'תמיכה מלאה ב-NVDA',
         'תמיכה מלאה ב-JAWS',
@@ -59,21 +63,22 @@ const Accessibility = () => {
 
   return (
     <Layout>
+      <SEO titleKey="meta.accessibility.title" descriptionKey="meta.accessibility.description" />
       {/* Hero */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-        
+
         <div className="container mx-auto px-6">
           <AnimatedSection className="max-w-4xl mx-auto text-center">
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              נגישות
+              {t('accessibility.badge')}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              הצהרת{' '}
-              <span className="gradient-text">נגישות</span>
+              {t('accessibility.title')}{' '}
+              <span className="gradient-text">{t('accessibility.titleGradient')}</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              עדכון אחרון: ינואר 2025
+              {t('accessibility.updated')}
             </p>
           </AnimatedSection>
         </div>
@@ -83,11 +88,11 @@ const Accessibility = () => {
       <section className="py-12 pb-24">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto space-y-8">
-            
+
             {/* Introduction */}
             <AnimatedSection>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">המחויבות שלנו לנגישות</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('accessibility.s1.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
                     Zyflows מחויבת להנגיש את האתר והשירותים שלה לכלל האוכלוסייה, כולל אנשים עם מוגבלויות. אנו מאמינים שלכל אדם מגיעה גישה שווה למידע ולשירותים.
@@ -102,7 +107,7 @@ const Accessibility = () => {
             {/* Standards */}
             <AnimatedSection delay={50}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">תקנים ועמידה בדרישות</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('accessibility.s2.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>אתר זה נבנה בהתאם לתקנים הבאים:</p>
                   <ul className="space-y-3 mr-4">
@@ -125,7 +130,7 @@ const Accessibility = () => {
 
             {/* Features Grid */}
             <AnimatedSection delay={100}>
-              <h2 className="text-2xl font-bold mb-6 text-center">כלי הנגישות באתר</h2>
+              <h2 className="text-2xl font-bold mb-6 text-center">{t('accessibility.s3.title')}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {features.map((feature, index) => (
                   <GlassCard key={index} hover={false} className="p-6">
@@ -151,10 +156,10 @@ const Accessibility = () => {
             {/* How to Use */}
             <AnimatedSection delay={150}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">כיצד להשתמש בכלי הנגישות</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('accessibility.s4.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    לחצו על כפתור הנגישות (♿) הממוקם בצד המסך כדי לפתוח את תפריט הנגישות. 
+                    לחצו על כפתור הנגישות (♿) הממוקם בצד המסך כדי לפתוח את תפריט הנגישות.
                     משם תוכלו לבחור את ההתאמות המתאימות לכם.
                   </p>
                   <div className="bg-primary/5 rounded-xl p-4 mt-4">
@@ -173,7 +178,7 @@ const Accessibility = () => {
             {/* Limitations */}
             <AnimatedSection delay={200}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">מגבלות ידועות</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('accessibility.s5.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
                     למרות מאמצינו הרבים, ייתכנו חלקים באתר שעדיין אינם נגישים במלואם:
@@ -193,7 +198,7 @@ const Accessibility = () => {
             {/* Browsers */}
             <AnimatedSection delay={250}>
               <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-primary">דפדפנים נתמכים</h2>
+                <h2 className="text-2xl font-bold mb-4 text-primary">{t('accessibility.s6.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>האתר והנגישות נבדקו ונתמכים בדפדפנים הבאים:</p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
@@ -211,7 +216,7 @@ const Accessibility = () => {
             {/* Contact */}
             <AnimatedSection delay={300}>
               <GlassCard hover={false} className="p-8 bg-primary/5">
-                <h2 className="text-2xl font-bold mb-4">נתקלתם בבעיית נגישות?</h2>
+                <h2 className="text-2xl font-bold mb-4">{t('accessibility.s7.title')}</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
                     אם נתקלתם בבעיה כלשהי בנגישות האתר, אנא צרו איתנו קשר ונטפל בכך בהקדם:

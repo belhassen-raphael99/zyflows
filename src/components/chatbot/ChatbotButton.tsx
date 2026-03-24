@@ -1,5 +1,6 @@
 import { MessageCircle, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ChatbotButtonProps {
   isOpen: boolean;
@@ -7,10 +8,11 @@ interface ChatbotButtonProps {
 }
 
 const ChatbotButton = ({ isOpen, onClick }: ChatbotButtonProps) => {
+  const { t } = useLanguage();
   return (
     <button
       onClick={onClick}
-      aria-label={isOpen ? "Fermer le chat" : "Ouvrir le chat"}
+      aria-label={isOpen ? t('closeChat') : t('openChat')}
       className={cn(
         "relative w-14 h-14 rounded-lg bg-card border border-primary/30",
         "flex items-center justify-center",

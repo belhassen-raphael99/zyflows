@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import { CheckCircle, ArrowLeft, ArrowRight, HelpCircle } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import GlassCard from '@/components/ui/GlassCard';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Pricing = () => {
-  const { t, dir } = useLanguage();
+  const { t, dir, language } = useLanguage();
+  const langPrefix = `/${language}`;
   const ArrowIcon = dir === 'rtl' ? ArrowLeft : ArrowRight;
 
   const pricingPlans = [
@@ -78,6 +80,7 @@ const Pricing = () => {
 
   return (
     <Layout>
+      <SEO titleKey="meta.pricing.title" descriptionKey="meta.pricing.description" />
       {/* Hero */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
@@ -137,7 +140,7 @@ const Pricing = () => {
                   </ul>
 
                   <Link
-                    to="/contact"
+                    to={`${langPrefix}/contact`}
                     className={`block w-full text-center py-4 rounded-xl font-semibold transition-all ${
                       plan.popular ? 'glow-button' : 'glow-button-outline'
                     }`}
@@ -162,7 +165,7 @@ const Pricing = () => {
               <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
                 {t('pricingPage.customSubtitle')}
               </p>
-              <Link to="/contact" className="glow-button inline-flex items-center gap-2">
+              <Link to={`${langPrefix}/contact`} className="glow-button inline-flex items-center gap-2">
                 {t('pricingPage.customButton')}
                 <ArrowIcon className="w-4 h-4" />
               </Link>

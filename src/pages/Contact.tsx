@@ -1,5 +1,6 @@
-import { Mail, Phone, MapPin, MessageCircle, Clock, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Clock } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
+import { SEO } from '@/components/SEO';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import GlassCard from '@/components/ui/GlassCard';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -38,6 +39,7 @@ const Contact = () => {
 
   return (
     <Layout>
+      <SEO titleKey="meta.contact.title" descriptionKey="meta.contact.description" />
       {/* Hero */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />

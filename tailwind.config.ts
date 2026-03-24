@@ -16,6 +16,10 @@ export default {
       fontFamily: {
         heebo: ['Heebo', 'sans-serif'],
       },
+      boxShadow: {
+        'glow-primary': '0 0 20px hsl(var(--primary) / 0.5)',
+        'glow-primary-lg': '0 0 30px hsl(var(--primary) / 0.4)',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

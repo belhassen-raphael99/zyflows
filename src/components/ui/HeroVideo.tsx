@@ -15,6 +15,7 @@ const HeroVideo = () => {
         loop
         muted
         playsInline
+        preload="none"
         className="w-full h-full object-cover"
       >
         <source src={heroVideo} type="video/mp4" />

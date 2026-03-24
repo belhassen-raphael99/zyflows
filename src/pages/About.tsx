@@ -24,7 +24,8 @@ import AnimatedSection from '@/components/ui/AnimatedSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const About = () => {
-  const { t, dir } = useLanguage();
+  const { t, dir, language } = useLanguage();
+  const langPrefix = `/${language}`;
   const ArrowIcon = dir === 'rtl' ? ArrowLeft : ArrowRight;
 
   const pathItems = [
@@ -315,12 +316,12 @@ const About = () => {
               {t('about.ctaProposition')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-              <Link to="/contact" className="glow-button inline-flex items-center justify-center gap-3">
+              <Link to={`${langPrefix}/contact`} className="glow-button inline-flex items-center justify-center gap-3">
                 <Calendar className="w-4 h-4" strokeWidth={1.5} />
                 {t('about.ctaButton1')}
               </Link>
               <Link
-                to="/contact"
+                to={`${langPrefix}/contact`}
                 className="inline-flex items-center justify-center gap-3 px-6 py-3 border border-primary/40 text-primary hover:bg-primary/10 transition-colors"
               >
                 <Mail className="w-4 h-4" strokeWidth={1.5} />

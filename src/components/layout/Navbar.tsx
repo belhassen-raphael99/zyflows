@@ -14,11 +14,11 @@ const Navbar = () => {
   const isRTL = language === 'he';
 
   const navLinks = [
-    { href: '/', label: t('nav.home') },
-    { href: '/about', label: t('nav.about') },
-    { href: '/services', label: t('nav.services') },
-    { href: '/pricing', label: t('nav.pricing') },
-    { href: '/contact', label: t('nav.contact') },
+    { href: `/${language}`, label: t('nav.home') },
+    { href: `/${language}/about`, label: t('nav.about') },
+    { href: `/${language}/services`, label: t('nav.services') },
+    { href: `/${language}/pricing`, label: t('nav.pricing') },
+    { href: `/${language}/contact`, label: t('nav.contact') },
   ];
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Navbar = () => {
           <div className="flex flex-row items-center justify-between">
             {/* Logo - Fixed width column */}
             <div className="w-[200px] shrink-0">
-              <Link to="/">
+              <Link to={`/${language}`}>
                 <AnimatedLogo size="sm" showName />
               </Link>
             </div>
@@ -69,7 +69,7 @@ const Navbar = () => {
             <div className="hidden md:flex items-center justify-end gap-4 w-[250px] shrink-0">
               <LanguageSwitcher />
               <Link
-                to="/contact"
+                to={`/${language}/contact`}
                 className="glow-button text-sm px-5 py-2 whitespace-nowrap"
               >
                 {t('nav.cta')}

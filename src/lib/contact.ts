@@ -1,6 +1,6 @@
 // Centralized contact information
 export const CONTACT_INFO = {
-  email: 'contact.zyflows@gmail.com',
+  email: 'contact@zyflows.com',
   phones: {
     israel: '+972 58-422-9255',
     france: '+33 7-69-03-58-29',

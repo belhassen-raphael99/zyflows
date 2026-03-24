@@ -1,4 +1,5 @@
 import { useAccessibility } from '@/contexts/AccessibilityContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
@@ -12,12 +13,13 @@ interface AccessibilityPanelProps {
 
 const AccessibilityPanel = ({ isOpen, onClose }: AccessibilityPanelProps) => {
   const { settings, setFontSize, setContrast, toggleReduceAnimations, resetSettings } = useAccessibility();
+  const { t } = useLanguage();
 
-  const fontSizeLabels = ['רגיל', 'גדול', 'גדול מאוד'];
+  const fontSizeLabels = [t('panel.fontSize.normal'), t('panel.fontSize.large'), t('panel.fontSize.extraLarge')];
   const contrastOptions: { value: 'normal' | 'high' | 'inverted'; label: string }[] = [
-    { value: 'normal', label: 'רגיל' },
-    { value: 'high', label: 'ניגודיות גבוהה' },
-    { value: 'inverted', label: 'צבעים הפוכים' },
+    { value: 'normal', label: t('panel.contrast.normal') },
+    { value: 'high', label: t('panel.contrast.high') },
+    { value: 'inverted', label: t('panel.contrast.inverted') },
   ];
 
   return (
@@ -46,13 +48,13 @@ const AccessibilityPanel = ({ isOpen, onClose }: AccessibilityPanelProps) => {
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-border">
             <h2 id="accessibility-panel-title" className="text-lg font-semibold">
-              הגדרות נגישות
+              {t('panel.title')}
             </h2>
             <Button
               variant="ghost"
               size="icon"
               onClick={onClose}
-              aria-label="סגור תפריט נגישות"
+              aria-label={t('closeAccessibility')}
             >
               <X className="w-5 h-5" />
             </Button>
@@ -64,7 +66,7 @@ const AccessibilityPanel = ({ isOpen, onClose }: AccessibilityPanelProps) => {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm font-medium">
                 <Type className="w-4 h-4 text-primary" />
-                <span>גודל גופן</span>
+                <span>{t('panel.fontSize')}</span>
               </div>
               <div className="space-y-2">
                 <Slider
@@ -74,7 +76,7 @@ const AccessibilityPanel = ({ isOpen, onClose }: AccessibilityPanelProps) => {
                   min={0}
                   step={1}
                   className="w-full"
-                  aria-label="גודל גופן"
+                  aria-label={t('panel.fontSize')}
                 />
                 <div className="flex justify-between text-xs text-muted-foreground">
                   {fontSizeLabels.map((label, index) => (
@@ -96,7 +98,7 @@ const AccessibilityPanel = ({ isOpen, onClose }: AccessibilityPanelProps) => {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm font-medium">
                 <Palette className="w-4 h-4 text-primary" />
-                <span>ניגודיות צבעים</span>
+                <span>{t('panel.contrast')}</span>
               </div>
               <div className="grid grid-cols-1 gap-2">
                 {contrastOptions.map((option) => (
@@ -121,18 +123,18 @@ const AccessibilityPanel = ({ isOpen, onClose }: AccessibilityPanelProps) => {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm font-medium">
                 <Zap className="w-4 h-4 text-primary" />
-                <span>אנימציות</span>
+                <span>{t('panel.animations')}</span>
               </div>
               <div className="flex items-center justify-between p-3 rounded-lg border border-border">
-                <span className="text-sm">הפחתת אנימציות</span>
+                <span className="text-sm">{t('panel.reduceAnimations')}</span>
                 <Switch
                   checked={settings.reduceAnimations}
                   onCheckedChange={toggleReduceAnimations}
-                  aria-label="הפחתת אנימציות"
+                  aria-label={t('panel.reduceAnimations')}
                 />
               </div>
               <p className="text-xs text-muted-foreground">
-                הפעלת אפשרות זו תפחית את האנימציות באתר לשיפור הנגישות
+                {t('panel.animationsHelp')}
               </p>
             </div>
           </div>
@@ -145,7 +147,7 @@ const AccessibilityPanel = ({ isOpen, onClose }: AccessibilityPanelProps) => {
               className="w-full gap-2"
             >
               <RotateCcw className="w-4 h-4" />
-              איפוס להגדרות ברירת מחדל
+              {t('panel.reset')}
             </Button>
           </div>
         </div>

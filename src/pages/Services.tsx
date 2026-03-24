@@ -7,7 +7,8 @@ import GlassCard from '@/components/ui/GlassCard';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Services = () => {
-  const { t, dir } = useLanguage();
+  const { t, dir, language } = useLanguage();
+  const langPrefix = `/${language}`;
   const ArrowIcon = dir === 'rtl' ? ArrowLeft : ArrowRight;
 
   const mainServices = [
@@ -122,7 +123,7 @@ const Services = () => {
                         {service.description}
                       </p>
                       <Link
-                        to="/contact"
+                        to={`${langPrefix}/contact`}
                         className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all font-medium"
                       >
                         {t('servicesPage.getQuote')}
@@ -187,7 +188,7 @@ const Services = () => {
               <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
                 {t('servicesPage.ctaSubtitle')}
               </p>
-              <Link to="/contact" className="glow-button inline-flex items-center gap-2">
+              <Link to={`${langPrefix}/contact`} className="glow-button inline-flex items-center gap-2">
                 {t('servicesPage.ctaButton')}
                 <ArrowIcon className="w-4 h-4" />
               </Link>

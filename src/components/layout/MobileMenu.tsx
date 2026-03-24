@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { useEffect } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -10,6 +11,7 @@ interface MobileMenuProps {
 
 const MobileMenu = ({ isOpen, onClose, links }: MobileMenuProps) => {
   const location = useLocation();
+  const { t } = useLanguage();
 
   // Close menu on route change
   useEffect(() => {
@@ -52,7 +54,7 @@ const MobileMenu = ({ isOpen, onClose, links }: MobileMenuProps) => {
             <button
               onClick={onClose}
               className="p-2 text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="סגור תפריט"
+              aria-label={t('closeMenu')}
             >
               <X className="w-6 h-6" />
             </button>
@@ -80,10 +82,10 @@ const MobileMenu = ({ isOpen, onClose, links }: MobileMenuProps) => {
           {/* CTA Button */}
           <div className="p-6 border-t border-border">
             <Link
-              to="/contact"
+              to={links.find(l => l.href.endsWith('/contact'))?.href || '/he/contact'}
               className="glow-button w-full text-center block"
             >
-              {links.find(l => l.href === '/contact')?.label || 'Contact'}
+              {links.find(l => l.href.endsWith('/contact'))?.label || 'Contact'}
             </Link>
           </div>
         </div>

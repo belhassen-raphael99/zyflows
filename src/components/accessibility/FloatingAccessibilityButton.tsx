@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Accessibility } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
 import AccessibilityPanel from './AccessibilityPanel';
 
 const FloatingAccessibilityButton = () => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <>
@@ -22,7 +24,7 @@ const FloatingAccessibilityButton = () => {
           'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background',
           'active:scale-95'
         )}
-        aria-label="פתיחת תפריט נגישות"
+        aria-label={t('openAccessibility')}
         aria-haspopup="dialog"
         aria-expanded={isPanelOpen}
       >
