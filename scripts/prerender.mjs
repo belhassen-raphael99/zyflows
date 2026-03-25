@@ -99,9 +99,29 @@ async function prerender() {
   } catch (error) {
     // Fallback pour d’anciennes versions de Puppeteer
     console.warn(
-      "Failed to launch Puppeteer with headless:'new', retrying with default options...",
+      "Failed to launch Puppeteer with headless:’new’, retrying with default options...",
     );
-    browser = await puppeteer.launch();
+    try {
+      browser = await puppeteer.launch();
+    } catch (fallbackError) {
+      // Puppeteer non disponible (ex: Vercel) — fallback: copier index.html sur toutes les routes
+      console.warn("Puppeteer unavailable, falling back to static HTML copy for all routes.");
+      preview.kill();
+      const indexHtml = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
+      for (const route of routesToPrerender) {
+        if (route === "/") continue;
+        const filename = routeToFilename(route);
+        const outputPath = path.join(distDir, filename);
+        const outputDir = path.dirname(outputPath);
+        if (!fs.existsSync(outputDir)) {
+          fs.mkdirSync(outputDir, { recursive: true });
+        }
+        fs.writeFileSync(outputPath, indexHtml, "utf-8");
+        console.log(`Copied index.html to ${path.relative(projectRoot, outputPath)}`);
+      }
+      console.log("Static HTML copy completed (Puppeteer fallback).");
+      return;
+    }
   }
 
   const page = await browser.newPage();
