@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, MessageCircle, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Clock, Send } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import AnimatedSection from '@/components/ui/AnimatedSection';
