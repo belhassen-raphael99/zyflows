@@ -2,168 +2,276 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- Homepage — Hebrew (canonical) -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Homepage                                                     -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
   <url>
     <loc>https://zyflows.com/he</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="https://zyflows.com/he"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://zyflows.com/fr"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://zyflows.com/en"/>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he"/>
   </url>
   <url>
     <loc>https://zyflows.com/fr</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he"/>
   </url>
   <url>
     <loc>https://zyflows.com/en</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he"/>
   </url>
 
-  <!-- About -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- About                                                        -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
   <url>
     <loc>https://zyflows.com/he/about</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/about"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/about"/>
   </url>
   <url>
     <loc>https://zyflows.com/fr/about</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/about"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/about"/>
   </url>
   <url>
     <loc>https://zyflows.com/en/about</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/about"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/about"/>
   </url>
 
-  <!-- Services -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Services                                                     -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
   <url>
     <loc>https://zyflows.com/he/services</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services"/>
   </url>
   <url>
     <loc>https://zyflows.com/fr/services</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services"/>
   </url>
   <url>
     <loc>https://zyflows.com/en/services</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services"/>
   </url>
 
-  <!-- Pricing -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Pricing                                                      -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
   <url>
     <loc>https://zyflows.com/he/pricing</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/pricing"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/pricing"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/pricing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/pricing"/>
   </url>
   <url>
     <loc>https://zyflows.com/fr/pricing</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/pricing"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/pricing"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/pricing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/pricing"/>
   </url>
   <url>
     <loc>https://zyflows.com/en/pricing</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/pricing"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/pricing"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/pricing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/pricing"/>
   </url>
 
-  <!-- Contact -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Contact                                                      -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
   <url>
     <loc>https://zyflows.com/he/contact</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/contact"/>
   </url>
   <url>
     <loc>https://zyflows.com/fr/contact</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/contact"/>
   </url>
   <url>
     <loc>https://zyflows.com/en/contact</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/contact"/>
   </url>
 
-  <!-- Terms -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Terms                                                        -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
   <url>
     <loc>https://zyflows.com/he/terms</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/terms"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/terms"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/terms"/>
   </url>
   <url>
     <loc>https://zyflows.com/fr/terms</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/terms"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/terms"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/terms"/>
   </url>
   <url>
     <loc>https://zyflows.com/en/terms</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/terms"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/terms"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/terms"/>
   </url>
 
-  <!-- Privacy -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Privacy                                                      -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
   <url>
     <loc>https://zyflows.com/he/privacy</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/privacy"/>
   </url>
   <url>
     <loc>https://zyflows.com/fr/privacy</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/privacy"/>
   </url>
   <url>
     <loc>https://zyflows.com/en/privacy</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/privacy"/>
   </url>
 
-  <!-- Accessibility -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Accessibility                                                -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
   <url>
     <loc>https://zyflows.com/he/accessibility</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/accessibility"/>
   </url>
   <url>
     <loc>https://zyflows.com/fr/accessibility</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/accessibility"/>
   </url>
   <url>
     <loc>https://zyflows.com/en/accessibility</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/accessibility"/>
   </url>
 
 </urlset>

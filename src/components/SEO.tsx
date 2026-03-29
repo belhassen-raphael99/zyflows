@@ -19,6 +19,10 @@ export const SEO = ({ titleKey, descriptionKey, image = '/og-image.png', url }: 
     // Ensure image is absolute URL
     const absoluteImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
+    // Page-specific hreflang: strip the language prefix to get the page slug
+    // e.g. /he/about → /about, /fr → ''
+    const pagePath = window.location.pathname.replace(/^\/(he|fr|en)/, '');
+
     return (
         <Helmet>
             {/* Primary Meta Tags */}
@@ -26,6 +30,7 @@ export const SEO = ({ titleKey, descriptionKey, image = '/og-image.png', url }: 
             <meta name="title" content={title} />
             <meta name="description" content={description} />
             <meta name="language" content={language} />
+            <link rel="canonical" href={currentUrl} />
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content="website" />
@@ -43,11 +48,11 @@ export const SEO = ({ titleKey, descriptionKey, image = '/og-image.png', url }: 
             <meta property="twitter:description" content={description} />
             <meta property="twitter:image" content={absoluteImage} />
 
-            {/* Alternate Languages links (optional but good for SEO) */}
-            <link rel="alternate" href={`${siteUrl}/he`} hrefLang="he" />
-            <link rel="alternate" href={`${siteUrl}/fr`} hrefLang="fr" />
-            <link rel="alternate" href={`${siteUrl}/en`} hrefLang="en" />
-            <link rel="alternate" href={`${siteUrl}/he`} hrefLang="x-default" />
+            {/* Page-specific hreflang — points to the same page in each language */}
+            <link rel="alternate" href={`${siteUrl}/he${pagePath}`} hrefLang="he" />
+            <link rel="alternate" href={`${siteUrl}/fr${pagePath}`} hrefLang="fr" />
+            <link rel="alternate" href={`${siteUrl}/en${pagePath}`} hrefLang="en" />
+            <link rel="alternate" href={`${siteUrl}/he${pagePath}`} hrefLang="x-default" />
         </Helmet>
     );
 };
