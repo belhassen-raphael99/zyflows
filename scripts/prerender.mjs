@@ -3,6 +3,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { spawn } from "child_process";
 import puppeteer from "puppeteer";
+import puppeteerCore from "puppeteer-core";
+import chromium from "@sparticuz/chromium";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -368,21 +370,28 @@ async function prerender() {
   const preview = await startPreviewServer();
   let browser;
 
+  // Launch strategy:
+  //   1. Local dev: bundled `puppeteer` finds its own Chrome.
+  //   2. Vercel build: bundled Chrome is missing → fall back to `puppeteer-core`
+  //      + `@sparticuz/chromium` which ships a serverless-friendly Chromium.
+  //   3. Both fail (no Chromium download) → static meta-only injection.
   try {
-    browser = await puppeteer.launch({
-      headless: "new",
-    });
+    browser = await puppeteer.launch({ headless: "new" });
   } catch (error) {
-    // Fallback pour d'anciennes versions de Puppeteer
     console.warn(
-      "Failed to launch Puppeteer with headless:'new', retrying with default options..."
+      `Bundled puppeteer failed (${error.message}). Trying @sparticuz/chromium...`
     );
     try {
-      browser = await puppeteer.launch();
-    } catch (fallbackError) {
-      // Puppeteer non disponible (ex: Vercel) — fallback: injecter les meta tags statiquement
+      const executablePath = await chromium.executablePath();
+      browser = await puppeteerCore.launch({
+        args: chromium.args,
+        executablePath,
+        headless: chromium.headless ?? true,
+      });
+      console.log("Launched Chromium via @sparticuz/chromium.");
+    } catch (sparticuzError) {
       console.warn(
-        "Puppeteer unavailable, falling back to static meta injection for all routes."
+        `@sparticuz/chromium also failed (${sparticuzError.message}). Falling back to static meta injection.`
       );
       preview.kill();
       const indexHtml = fs.readFileSync(
@@ -397,14 +406,13 @@ async function prerender() {
         if (!fs.existsSync(outputDir)) {
           fs.mkdirSync(outputDir, { recursive: true });
         }
-        // Inject route-specific meta tags instead of blindly copying index.html
         const injectedHtml = injectMeta(indexHtml, route);
         fs.writeFileSync(outputPath, injectedHtml, "utf-8");
         console.log(
           `Injected meta for ${route} → ${path.relative(projectRoot, outputPath)}`
         );
       }
-      console.log("Static meta injection completed (Puppeteer fallback).");
+      console.log("Static meta injection completed (final fallback).");
       return;
     }
   }
