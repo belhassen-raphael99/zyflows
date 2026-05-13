@@ -5,6 +5,7 @@ import { SEO } from '@/components/SEO';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import GlassCard from '@/components/ui/GlassCard';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { ServiceSubpageGrid } from '@/features/service-subpages';
 
 const Services = () => {
   const { t, dir, language } = useLanguage();
@@ -148,6 +149,9 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      {/* Specialized service subpages — internal links for SEO + UX */}
+      <ServiceSubpageGrid />
 
       {/* Additional Services */}
       <section className="py-24 bg-card/30">
