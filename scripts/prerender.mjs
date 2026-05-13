@@ -15,7 +15,7 @@ const siteUrl = "https://zyflows.com";
 // Languages supported
 const languages = ["he", "fr", "en"];
 
-// Pages to prerender (relative to language root)
+// Pages to prerender for ALL languages (he/fr/en)
 const pages = [
   "", // for index (e.g. /he)
   "about",
@@ -25,11 +25,17 @@ const pages = [
   "services/automation",
   "services/crm",
   "services/ecommerce",
+  "blog",
   "pricing",
   "contact",
   "terms",
   "accessibility",
   "privacy",
+];
+
+// Hebrew-only pages (e.g. blog articles only published in Hebrew)
+const hebrewOnlyPages = [
+  "blog/guide-automation-ai-2026",
 ];
 
 // Generate all routes
@@ -39,6 +45,9 @@ languages.forEach((lang) => {
     const route = page ? `/${lang}/${page}` : `/${lang}`;
     routesToPrerender.push(route);
   });
+});
+hebrewOnlyPages.forEach((page) => {
+  routesToPrerender.push(`/he/${page}`);
 });
 
 // ---------------------------------------------------------------------------

@@ -16,6 +16,8 @@ import Accessibility from "./pages/Accessibility";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 import ServiceSubpagePage from "./pages/ServiceSubpagePage";
+import BlogListPage from "./pages/BlogListPage";
+import BlogPostPage from "./pages/BlogPostPage";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +45,8 @@ const AppRoutes = () => {
         <Route path="about" element={<About />} />
         <Route path="services" element={<Services />} />
         <Route path="services/:slug" element={<ServiceSubpagePage />} />
+        <Route path="blog" element={<BlogListPage />} />
+        <Route path="blog/:slug" element={<BlogPostPage />} />
         <Route path="pricing" element={<Pricing />} />
         <Route path="contact" element={<Contact />} />
         <Route path="terms" element={<Terms />} />
