@@ -274,4 +274,174 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/accessibility"/>
   </url>
 
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Service subpage: AI Agents                                   -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://zyflows.com/he/services/ai-agents</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/ai-agents"/>
+  </url>
+  <url>
+    <loc>https://zyflows.com/fr/services/ai-agents</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/ai-agents"/>
+  </url>
+  <url>
+    <loc>https://zyflows.com/en/services/ai-agents</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/ai-agents"/>
+  </url>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Service subpage: Chatbots                                    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://zyflows.com/he/services/chatbots</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/chatbots"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/chatbots"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/chatbots"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/chatbots"/>
+  </url>
+  <url>
+    <loc>https://zyflows.com/fr/services/chatbots</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/chatbots"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/chatbots"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/chatbots"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/chatbots"/>
+  </url>
+  <url>
+    <loc>https://zyflows.com/en/services/chatbots</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/chatbots"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/chatbots"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/chatbots"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/chatbots"/>
+  </url>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Service subpage: Automation                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://zyflows.com/he/services/automation</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/automation"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/automation"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/automation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/automation"/>
+  </url>
+  <url>
+    <loc>https://zyflows.com/fr/services/automation</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/automation"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/automation"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/automation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/automation"/>
+  </url>
+  <url>
+    <loc>https://zyflows.com/en/services/automation</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/automation"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/automation"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/automation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/automation"/>
+  </url>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Service subpage: CRM                                         -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://zyflows.com/he/services/crm</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/crm"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/crm"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/crm"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/crm"/>
+  </url>
+  <url>
+    <loc>https://zyflows.com/fr/services/crm</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/crm"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/crm"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/crm"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/crm"/>
+  </url>
+  <url>
+    <loc>https://zyflows.com/en/services/crm</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/crm"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/crm"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/crm"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/crm"/>
+  </url>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Service subpage: E-commerce                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://zyflows.com/he/services/ecommerce</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/ecommerce"/>
+  </url>
+  <url>
+    <loc>https://zyflows.com/fr/services/ecommerce</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/ecommerce"/>
+  </url>
+  <url>
+    <loc>https://zyflows.com/en/services/ecommerce</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/ecommerce"/>
+  </url>
+
 </urlset>

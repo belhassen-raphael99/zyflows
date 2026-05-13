@@ -15,6 +15,7 @@ import Terms from "./pages/Terms";
 import Accessibility from "./pages/Accessibility";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
+import ServiceSubpagePage from "./pages/ServiceSubpagePage";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const AppRoutes = () => {
         <Route index element={<Index />} />
         <Route path="about" element={<About />} />
         <Route path="services" element={<Services />} />
+        <Route path="services/:slug" element={<ServiceSubpagePage />} />
         <Route path="pricing" element={<Pricing />} />
         <Route path="contact" element={<Contact />} />
         <Route path="terms" element={<Terms />} />
