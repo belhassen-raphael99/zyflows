@@ -20,6 +20,7 @@ const pages = [
   "", // for index (e.g. /he)
   "about",
   "services",
+  "services/ai-agents",
   "pricing",
   "contact",
   "terms",

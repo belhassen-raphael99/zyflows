@@ -274,4 +274,38 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/accessibility"/>
   </url>
 
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Service subpage: AI Agents                                   -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://zyflows.com/he/services/ai-agents</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/ai-agents"/>
+  </url>
+  <url>
+    <loc>https://zyflows.com/fr/services/ai-agents</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/ai-agents"/>
+  </url>
+  <url>
+    <loc>https://zyflows.com/en/services/ai-agents</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he"        href="https://zyflows.com/he/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="fr"        href="https://zyflows.com/fr/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://zyflows.com/en/services/ai-agents"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zyflows.com/he/services/ai-agents"/>
+  </url>
+
 </urlset>
