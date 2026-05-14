@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import MobileMenu from './MobileMenu';
+import { NavbarServicesDropdown } from './NavbarServicesDropdown';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import AnimatedLogo from '@/components/ui/AnimatedLogo';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -16,7 +17,8 @@ const Navbar = () => {
   const navLinks = [
     { href: `/${language}`, label: t('nav.home') },
     { href: `/${language}/about`, label: t('nav.about') },
-    { href: `/${language}/services`, label: t('nav.services') },
+    { href: `/${language}/services`, label: t('nav.services'), isDropdown: true as const },
+    { href: `/${language}/blog`, label: t('nav.blog') },
     { href: `/${language}/pricing`, label: t('nav.pricing') },
     { href: `/${language}/contact`, label: t('nav.contact') },
   ];
@@ -50,19 +52,29 @@ const Navbar = () => {
 
             {/* Desktop Navigation - Flexible center column */}
             <div className={`hidden md:flex flex-1 items-center justify-center gap-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
-                    location.pathname === link.href
-                      ? 'text-primary'
-                      : 'text-muted-foreground'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                if ('isDropdown' in link && link.isDropdown) {
+                  return (
+                    <NavbarServicesDropdown
+                      key={link.href}
+                      isActive={location.pathname === link.href}
+                    />
+                  );
+                }
+                return (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className={`text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
+                      location.pathname === link.href
+                        ? 'text-primary'
+                        : 'text-muted-foreground'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </div>
 
             {/* Right Side Actions - Fixed width column */}
