@@ -29,6 +29,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.about': 'אודות',
     'nav.services': 'שירותים',
     'nav.pricing': 'חבילות',
+    'nav.blog': 'בלוג',
     'nav.contact': 'צור קשר',
     'nav.cta': 'קבלו ייעוץ חינם',
 
@@ -415,6 +416,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.about': 'À propos',
     'nav.services': 'Services',
     'nav.pricing': 'Tarifs',
+    'nav.blog': 'Blog',
     'nav.contact': 'Contact',
     'nav.cta': 'Consultation gratuite',
 
@@ -801,6 +803,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.about': 'About',
     'nav.services': 'Services',
     'nav.pricing': 'Pricing',
+    'nav.blog': 'Blog',
     'nav.contact': 'Contact',
     'nav.cta': 'Free Consultation',
 
