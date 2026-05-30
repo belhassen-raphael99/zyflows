@@ -13,7 +13,7 @@ export const SEO = ({ titleKey, descriptionKey, image = '/og-image.png', url }: 
 
     const title = t(titleKey);
     const description = t(descriptionKey);
-    const siteUrl = import.meta.env.VITE_SITE_URL || 'https://zyflows.com';
+    const siteUrl = import.meta.env.VITE_SITE_URL || 'https://www.zyflows.com';
     const currentUrl = url || `${siteUrl}/${language}${window.location.pathname.replace(/^\/(en|fr|he)/, '')}`;
 
     // Ensure image is absolute URL
