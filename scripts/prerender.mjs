@@ -441,18 +441,37 @@ async function prerender() {
     console.log(`Prerendering ${url}...`);
 
     try {
+      // waitUntil "domcontentloaded" instead of "networkidle0":
+      // - networkidle0 waits for ZERO open connections for 500ms, which never
+      //   happens on pages with the Spline 3D globe + 4.5MB hero video.
+      // - domcontentloaded fires when the HTML is parsed; React hydration
+      //   happens after, so we use the waitForSelector below to confirm.
+      // Also bump navigation timeout from default 30s → 60s for safety.
       await page.goto(url, {
-        waitUntil: "networkidle0",
+        waitUntil: "domcontentloaded",
+        timeout: 60000,
       });
 
-      // Attendre que le contenu principal soit monté
+      // Wait for React to render content into #root.
+      // The HTML template ships <div id="root"></div> empty; React hydration
+      // adds children. Checking children.length > 0 works universally across
+      // all pages without depending on a specific layout structure.
       try {
-        await page.waitForSelector("#root, main", { timeout: 15000 });
+        await page.waitForFunction(
+          () => {
+            const root = document.querySelector("#root");
+            return root && root.children.length > 0;
+          },
+          { timeout: 20000 },
+        );
       } catch {
         console.warn(
-          `Selector #root or main not found for route "${route}" within timeout.`
+          `React did not render into #root for route "${route}" within 20s.`
         );
       }
+
+      // Small extra wait for any final React state updates (Helmet, etc.).
+      await waitFor(500);
 
       const html = await page.content();
       const filename = routeToFilename(route);
