@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Fable 5 — Carousel</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0a;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 32px;
+    min-height: 100vh;
+  }
+
+  .carousel-header {
+    color: #666;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #222;
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .slide-wrapper {
+    position: relative;
+    width: 520px;
+  }
+
+  .slide-number {
+    position: absolute;
+    top: -28px;
+    right: 0;
+    color: #444;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .slide {
+    width: 520px;
+    height: 520px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 48px;
+  }
+
+  /* ─── SLIDE 1 — HOOK ─── */
+  .slide-1 {
+    background: linear-gradient(160deg, #0d0d0d 0%, #1a0a00 50%, #0d0d0d 100%);
+    border: 1px solid #2a1500;
+  }
+  .slide-1::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(255,80,0,0.08) 0%, transparent 70%);
+  }
+  .slide-1 .tombstone-icon {
+    font-size: 64px;
+    margin-bottom: 28px;
+    filter: drop-shadow(0 0 20px rgba(255,80,0,0.3));
+  }
+  .slide-1 .days {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #ff5000;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .slide-1 h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .slide-1 h1 span {
+    color: #ff5000;
+  }
+  .slide-1 .subtitle {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.6;
+    max-width: 340px;
+  }
+  .slide-1 .logo {
+    position: absolute;
+    bottom: 28px;
+    right: 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  /* ─── SLIDE 2 — TIMELINE ─── */
+  .slide-2 {
+    background: #0d0d0d;
+    border: 1px solid #1e1e1e;
+    align-items: flex-start;
+    padding: 48px 52px;
+  }
+  .slide-2 .tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ff5000;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .slide-2 h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 36px;
+  }
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+  .tl-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding-bottom: 28px;
+    position: relative;
+  }
+  .tl-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 28px;
+    width: 1px;
+    height: calc(100% - 14px);
+    background: linear-gradient(to bottom, #ff5000, #333);
+  }
+  .tl-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #ff5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 2px;
+  }
+  .tl-dot.dark { background: #1e1e1e; border: 1px solid #333; color: #666; }
+  .tl-content {}
+  .tl-date {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #ff5000;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .tl-date.dark-date { color: #555; }
+  .tl-text {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .tl-text strong { color: #fff; font-weight: 700; }
+  .slide-2 .logo {
+    position: absolute;
+    bottom: 28px;
+    right: 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  /* ─── SLIDE 3 — THE MODELS ─── */
+  .slide-3 {
+    background: linear-gradient(160deg, #0d0d0d 0%, #000d1a 100%);
+    border: 1px solid #0a1a2a;
+    align-items: flex-start;
+    padding: 48px 52px;
+  }
+  .slide-3 .tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #0ea5e9;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .slide-3 h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: rgba(14,165,233,0.05);
+    border: 1px solid rgba(14,165,233,0.15);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .stat-value {
+    font-size: 22px;
+    font-weight: 900;
+    color: #0ea5e9;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .slide-3 .note {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+  }
+  .slide-3 .note span { color: #0ea5e9; }
+  .slide-3 .logo {
+    position: absolute;
+    bottom: 28px;
+    right: 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  /* ─── SLIDE 4 — THE LETTER ─── */
+  .slide-4 {
+    background: #0d0d0d;
+    border: 1px solid #1e1e1e;
+    padding: 52px;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .slide-4 .tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ff5000;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .slide-4 h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 28px;
+  }
+  .letter-card {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-left: 3px solid #ff5000;
+    border-radius: 4px;
+    padding: 20px 24px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .letter-from {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ff5000;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .letter-text {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.7;
+  }
+  .letter-text strong { color: #fff; }
+  .slide-4 .consequence {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.6;
+  }
+  .slide-4 .consequence strong { color: #ff5000; }
+  .slide-4 .logo {
+    position: absolute;
+    bottom: 28px;
+    right: 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  /* ─── SLIDE 5 — THE JAILBREAK ─── */
+  .slide-5 {
+    background: linear-gradient(160deg, #0d0d0d 0%, #0d0d00 100%);
+    border: 1px solid #1e1e00;
+    padding: 52px;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .slide-5 .tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #eab308;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .slide-5 h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+  .claim-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  .claim {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .claim-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .claim-text {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.6;
+  }
+  .claim-text strong { color: #fff; }
+  .claim-text em { color: #eab308; font-style: normal; font-weight: 600; }
+  .slide-5 .bottom-note {
+    background: rgba(234,179,8,0.05);
+    border: 1px solid rgba(234,179,8,0.15);
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 12px;
+    color: #888;
+    line-height: 1.6;
+    width: 100%;
+  }
+  .slide-5 .bottom-note strong { color: #eab308; }
+  .slide-5 .logo {
+    position: absolute;
+    bottom: 28px;
+    right: 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  /* ─── SLIDE 6 — ANTHROPIC FIGHTS BACK ─── */
+  .slide-6 {
+    background: #0d0d0d;
+    border: 1px solid #1e1e1e;
+    padding: 52px;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .slide-6 .tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #22c55e;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .slide-6 h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+  .vs-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  .vs-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+  .vs-gov {
+    background: rgba(255,80,0,0.05);
+    border: 1px solid rgba(255,80,0,0.2);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: #aaa;
+    line-height: 1.5;
+  }
+  .vs-gov strong { color: #ff5000; font-size: 10px; display: block; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+  .vs-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #444;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .vs-ant {
+    background: rgba(34,197,94,0.05);
+    border: 1px solid rgba(34,197,94,0.2);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: #aaa;
+    line-height: 1.5;
+  }
+  .vs-ant strong { color: #22c55e; font-size: 10px; display: block; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+  .slide-6 .logo {
+    position: absolute;
+    bottom: 28px;
+    right: 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  /* ─── SLIDE 7 — REAL CONTEXT ─── */
+  .slide-7 {
+    background: linear-gradient(160deg, #0d0d0d 0%, #0d000d 100%);
+    border: 1px solid #1a001a;
+    padding: 52px;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .slide-7 .tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #a855f7;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .slide-7 h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+  .context-items {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+  }
+  .ctx-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .ctx-badge {
+    background: rgba(168,85,247,0.15);
+    border: 1px solid rgba(168,85,247,0.3);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #a855f7;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    margin-top: 2px;
+    white-space: nowrap;
+  }
+  .ctx-text {
+    font-size: 13px;
+    color: #bbb;
+    line-height: 1.6;
+  }
+  .ctx-text strong { color: #fff; }
+  .slide-7 .logo {
+    position: absolute;
+    bottom: 28px;
+    right: 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  /* ─── SLIDE 8 — PRECEDENT ─── */
+  .slide-8 {
+    background: #0d0d0d;
+    border: 1px solid #1e1e1e;
+    padding: 52px;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .slide-8 .tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ff5000;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .slide-8 h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+  .precedent-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .prec-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .prec-icon { font-size: 22px; margin-bottom: 10px; }
+  .prec-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .prec-desc {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.5;
+  }
+  .slide-8 .big-q {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.7;
+    border-top: 1px solid #1e1e1e;
+    padding-top: 18px;
+    width: 100%;
+  }
+  .slide-8 .big-q strong { color: #ff5000; }
+  .slide-8 .logo {
+    position: absolute;
+    bottom: 28px;
+    right: 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  /* ─── SLIDE 9 — CTA ─── */
+  .slide-9 {
+    background: linear-gradient(160deg, #0d0d0d 0%, #1a0a00 50%, #0d0d0d 100%);
+    border: 1px solid #2a1500;
+  }
+  .slide-9::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(255,80,0,0.06) 0%, transparent 70%);
+  }
+  .slide-9 .rip-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: #ff5000;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .slide-9 h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .slide-9 .dates {
+    font-size: 13px;
+    color: #555;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+  }
+  .slide-9 .question {
+    font-size: 15px;
+    color: #aaa;
+    line-height: 1.7;
+    max-width: 340px;
+    margin-bottom: 28px;
+  }
+  .slide-9 .question strong { color: #fff; }
+  .slide-9 .cta {
+    background: #ff5000;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 24px;
+  }
+  .slide-9 .hashtags {
+    font-size: 11px;
+    color: #333;
+    letter-spacing: 1px;
+    line-height: 2;
+  }
+  .slide-9 .logo {
+    position: absolute;
+    bottom: 28px;
+    right: 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  .nav-hint {
+    color: #333;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="carousel-header">Claude Fable 5 — LinkedIn &amp; Instagram Carousel · 9 Slides · 1:1</div>
+
+<!-- ─────────────────── SLIDE 1 ─────────────────── -->
+<div class="slide-wrapper">
+  <div class="slide-number">01 / 09</div>
+  <div class="slide slide-1">
+    <div class="tombstone-icon">🪦</div>
+    <div class="days">Born &amp; Killed in 3 days</div>
+    <h1>The most powerful AI<br>ever released.<br><span>Buried by decree.</span></h1>
+    <p class="subtitle">What really happened to Claude Fable 5 — and why it changes AI forever.</p>
+    <div class="logo">Swipe →</div>
+  </div>
+</div>
+
+<!-- ─────────────────── SLIDE 2 ─────────────────── -->
+<div class="slide-wrapper">
+  <div class="slide-number">02 / 09</div>
+  <div class="slide slide-2">
+    <div class="tag">What happened</div>
+    <h2>3 days.<br>One letter.<br>Global shutdown.</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">1</div>
+        <div class="tl-content">
+          <div class="tl-date">June 9, 2026</div>
+          <div class="tl-text">Anthropic launches <strong>Claude Fable 5 &amp; Mythos 5</strong> — the most capable models ever made public.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2</div>
+        <div class="tl-content">
+          <div class="tl-date">June 12 · 5:21 PM ET</div>
+          <div class="tl-text">US Commerce Secretary <strong>Howard Lutnick</strong> sends a letter to <strong>Dario Amodei</strong> — export controls, effective immediately.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dark">3</div>
+        <div class="tl-content">
+          <div class="tl-date dark-date">June 12 · evening</div>
+          <div class="tl-text">Anthropic <strong>shuts down both models for everyone</strong>, worldwide. No warning for users.</div>
+        </div>
+      </div>
+    </div>
+    <div class="logo">Swipe →</div>
+  </div>
+</div>
+
+<!-- ─────────────────── SLIDE 3 ─────────────────── -->
+<div class="slide-wrapper">
+  <div class="slide-number">03 / 09</div>
+  <div class="slide slide-3">
+    <div class="tag">The Model</div>
+    <h2>What the world just lost.</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">80.3%</div>
+        <div class="stat-label">SWE-Bench Pro<br>+11 pts ahead of #2</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">1M</div>
+        <div class="stat-label">Token context window</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">128K</div>
+        <div class="stat-label">Max output tokens</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">$10</div>
+        <div class="stat-label">Per 1M input tokens</div>
+      </div>
+    </div>
+    <p class="note">Available on <span>AWS Bedrock · Google Vertex · Microsoft Foundry</span><br>State-of-the-art in software engineering, science, vision.</p>
+    <div class="logo">Swipe →</div>
+  </div>
+</div>
+
+<!-- ─────────────────── SLIDE 4 ─────────────────── -->
+<div class="slide-wrapper">
+  <div class="slide-number">04 / 09</div>
+  <div class="slide slide-4">
+    <div class="tag">The Government Order</div>
+    <h2>One letter.<br>Billions of users<br>cut off instantly.</h2>
+    <div class="letter-card">
+      <div class="letter-from">From: Commerce Secretary H. Lutnick → CEO D. Amodei</div>
+      <div class="letter-text">
+        Fable 5 and Mythos 5 are now classified under <strong>US export control rules</strong>.
+        No foreign national — inside or outside the US — may access these models.
+        This includes <strong>Anthropic's own foreign-born employees.</strong>
+      </div>
+    </div>
+    <p class="consequence">Anthropic cannot filter users by nationality in real time.<br>Result: <strong>total global shutdown for everyone.</strong></p>
+    <div class="logo">Swipe →</div>
+  </div>
+</div>
+
+<!-- ─────────────────── SLIDE 5 ─────────────────── -->
+<div class="slide-wrapper">
+  <div class="slide-number">05 / 09</div>
+  <div class="slide slide-5">
+    <div class="tag">The Alleged Threat</div>
+    <h2>A "jailbreak".<br>Really?</h2>
+    <div class="claim-list">
+      <div class="claim">
+        <div class="claim-icon">⚠️</div>
+        <div class="claim-text">The government claims another company found a way to <em>bypass Fable 5's safety limits</em> to identify software vulnerabilities in codebases — a cybersecurity weapon.</div>
+      </div>
+      <div class="claim">
+        <div class="claim-icon">🔍</div>
+        <div class="claim-text">Anthropic reviewed the demo. Result: <strong>only minor, already-known vulnerabilities</strong> were found. Nothing new. Nothing catastrophic.</div>
+      </div>
+      <div class="claim">
+        <div class="claim-icon">🤔</div>
+        <div class="claim-text"><strong>GPT-5.5</strong> can produce the same results — <em>without any export control applied to it.</em></div>
+      </div>
+    </div>
+    <div class="bottom-note">Only <strong>verbal evidence</strong> was provided. No written proof. A "narrow, non-universal jailbreak" — Anthropic's words.</div>
+    <div class="logo">Swipe →</div>
+  </div>
+</div>
+
+<!-- ─────────────────── SLIDE 6 ─────────────────── -->
+<div class="slide-wrapper">
+  <div class="slide-number">06 / 09</div>
+  <div class="slide slide-6">
+    <div class="tag">Anthropic Fights Back</div>
+    <h2>Government says one thing.<br>Anthropic says another.</h2>
+    <div class="vs-block">
+      <div class="vs-row">
+        <div class="vs-gov"><strong>Washington</strong>"Fable 5 is a national security threat via cybersecurity jailbreak."</div>
+        <div class="vs-label">VS</div>
+        <div class="vs-ant"><strong>Anthropic</strong>"The jailbreak is narrow. GPT-5.5 does the same. No model should be singled out."</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-gov"><strong>Washington</strong>"Export controls are necessary. Effective immediately."</div>
+        <div class="vs-label">VS</div>
+        <div class="vs-ant"><strong>Anthropic</strong>"This standard would halt ALL new frontier model deployments across the AI industry."</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-gov"><strong>Washington</strong>No written justification provided.</div>
+        <div class="vs-label">VS</div>
+        <div class="vs-ant"><strong>Anthropic</strong>"This is a misunderstanding. We are working urgently to restore access."</div>
+      </div>
+    </div>
+    <div class="logo">Swipe →</div>
+  </div>
+</div>
+
+<!-- ─────────────────── SLIDE 7 ─────────────────── -->
+<div class="slide-wrapper">
+  <div class="slide-number">07 / 09</div>
+  <div class="slide slide-7">
+    <div class="tag">The Real Context</div>
+    <h2>This didn't come<br>out of nowhere.</h2>
+    <div class="context-items">
+      <div class="ctx-item">
+        <div class="ctx-badge">March 2026</div>
+        <div class="ctx-text">The <strong>Pentagon blacklists Anthropic</strong> as a "supply chain risk" — after Anthropic refuses to let Claude be used for mass surveillance and fully autonomous weapons systems.</div>
+      </div>
+      <div class="ctx-item">
+        <div class="ctx-badge">May 2026</div>
+        <div class="ctx-text">Anthropic files a <strong>confidential IPO prospectus</strong> — $47B revenue run rate, $965B valuation. Becomes a major geopolitical target.</div>
+      </div>
+      <div class="ctx-item">
+        <div class="ctx-badge">June 9</div>
+        <div class="ctx-text">The Trump administration tried to get Anthropic to <strong>pause the model release</strong> before launch. Anthropic refused.</div>
+      </div>
+      <div class="ctx-item">
+        <div class="ctx-badge">June 12</div>
+        <div class="ctx-text">The export control letter arrives. Anthropic has <strong>3 hours to comply</strong> before shutting down for everyone.</div>
+      </div>
+    </div>
+    <div class="logo">Swipe →</div>
+  </div>
+</div>
+
+<!-- ─────────────────── SLIDE 8 ─────────────────── -->
+<div class="slide-wrapper">
+  <div class="slide-number">08 / 09</div>
+  <div class="slide slide-8">
+    <div class="tag">The Historic Precedent</div>
+    <h2>Why this changes<br>everything.</h2>
+    <div class="precedent-grid">
+      <div class="prec-card">
+        <div class="prec-icon">🏛️</div>
+        <div class="prec-title">A legal first</div>
+        <div class="prec-desc">First time export control laws — designed for chips &amp; missiles — are used against a commercial language model.</div>
+      </div>
+      <div class="prec-card">
+        <div class="prec-icon">🌍</div>
+        <div class="prec-title">Global reach</div>
+        <div class="prec-desc">Hundreds of millions of users, worldwide, cut off in hours. No prior warning. No appeal process.</div>
+      </div>
+      <div class="prec-card">
+        <div class="prec-icon">⚖️</div>
+        <div class="prec-title">Unequal rules</div>
+        <div class="prec-desc">GPT-5.5, Gemini, Llama — same alleged capabilities. Zero controls. Only Anthropic targeted.</div>
+      </div>
+      <div class="prec-card">
+        <div class="prec-icon">💼</div>
+        <div class="prec-title">Business impact</div>
+        <div class="prec-desc">CFO filed in federal court: government actions could cut Anthropic's 2026 revenue by "multiple billions."</div>
+      </div>
+    </div>
+    <p class="big-q">If a government can <strong>kill your AI stack overnight</strong> — what does digital sovereignty mean for your business?</p>
+    <div class="logo">Swipe →</div>
+  </div>
+</div>
+
+<!-- ─────────────────── SLIDE 9 ─────────────────── -->
+<div class="slide-wrapper">
+  <div class="slide-number">09 / 09</div>
+  <div class="slide slide-9">
+    <div class="rip-text">Rest in Peace</div>
+    <h2>Claude Fable 5</h2>
+    <div class="dates">09.06.2026 — 12.06.2026 · Gone too soon.</div>
+    <p class="question">
+      Is this <strong>legitimate national security</strong>?<br>
+      Or a dangerous precedent that puts<br>every AI company — and their users — at risk?
+    </p>
+    <div class="cta">Drop your take below ↓</div>
+    <div class="hashtags">
+      #ClaudeFable5 &nbsp; #Anthropic &nbsp; #AIPolicy &nbsp; #ExportControls<br>
+      #NationalSecurity &nbsp; #AIGovernance &nbsp; #TechNews &nbsp; #DigitalSovereignty
+    </div>
+    <div class="logo">🪦</div>
+  </div>
+</div>
+
+<div class="nav-hint">— 9 slides · export each at 1080×1080 for Instagram / LinkedIn —</div>
+
+</body>
+</html>
