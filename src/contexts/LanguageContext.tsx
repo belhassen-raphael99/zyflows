@@ -135,6 +135,12 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.topicOther': 'אחר',
     'contact.form.responseTime': 'נחזור אליכם תוך 24 שעות עסקים',
     'contact.form.sendRequest': 'שלחו פנייה',
+    'contact.form.sending': 'שולח...',
+    'contact.form.successTitle': 'תודה! קיבלנו את הפנייה שלך',
+    'contact.form.successMessage': 'נחזור אליך תוך 24 שעות עסקים. בינתיים אתה יכול לראות איך אנחנו עובדים בעמוד השירותים שלנו.',
+    'contact.form.successAnother': 'לשלוח פנייה נוספת',
+    'contact.form.errorGeneric': 'משהו השתבש בשליחה. נסה שוב בעוד רגע או דבר איתנו ב-WhatsApp.',
+    'contact.form.errorValidation': 'אנא בדוק שמילאת את השם, האימייל והטלפון.',
 
     // Contact Info
     'contact.email': 'אימייל',
@@ -522,6 +528,12 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.topicOther': 'Autre',
     'contact.form.responseTime': 'Nous vous répondrons sous 24h ouvrées',
     'contact.form.sendRequest': 'Envoyer la demande',
+    'contact.form.sending': 'Envoi en cours...',
+    'contact.form.successTitle': 'Merci, votre message est bien parti',
+    'contact.form.successMessage': 'On revient vers vous sous 24h ouvrées. En attendant vous pouvez voir comment on travaille sur la page services.',
+    'contact.form.successAnother': 'Envoyer une autre demande',
+    'contact.form.errorGeneric': 'Un problème est survenu à l\'envoi. Réessaye dans un instant ou contacte-nous sur WhatsApp.',
+    'contact.form.errorValidation': 'Vérifie que le nom, l\'email et le téléphone sont bien remplis.',
 
     // Contact Info
     'contact.email': 'Email',
@@ -909,6 +921,12 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.topicOther': 'Other',
     'contact.form.responseTime': 'We\'ll respond within 24 business hours',
     'contact.form.sendRequest': 'Send Request',
+    'contact.form.sending': 'Sending...',
+    'contact.form.successTitle': 'Thanks! Your message is on its way',
+    'contact.form.successMessage': 'We\'ll get back to you within 24 business hours. In the meantime, check out how we work on the services page.',
+    'contact.form.successAnother': 'Send another message',
+    'contact.form.errorGeneric': 'Something went wrong while sending. Try again in a moment, or reach us on WhatsApp.',
+    'contact.form.errorValidation': 'Please check that name, email and phone are filled in.',
 
     // Contact Info
     'contact.email': 'Email',

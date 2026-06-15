@@ -1,10 +1,11 @@
-import { Mail, Phone, MapPin, MessageCircle, Clock, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Clock } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import GlassCard from '@/components/ui/GlassCard';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { CONTACT_INFO } from '@/lib/contact';
+import { ContactForm } from '@/features/contact';
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -137,87 +138,7 @@ const Contact = () => {
 
             {/* Contact Form */}
             <AnimatedSection delay={100}>
-              <GlassCard hover={false} className="p-8">
-                <h2 className="text-2xl font-bold mb-6">
-                  {t('contact.leaveDetails')}
-                </h2>
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium mb-2">{t('contact.form.name')} *</label>
-                      <input
-                        type="text"
-                        required
-                        className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                        placeholder={t('contact.form.namePlaceholder')}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">{t('contact.form.phone')} *</label>
-                      <input
-                        type="tel"
-                        required
-                        className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                        placeholder={t('contact.form.phonePlaceholder')}
-                        dir="ltr"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">{t('contact.form.email')} *</label>
-                    <input
-                      type="email"
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                      placeholder={t('contact.form.emailPlaceholder')}
-                      dir="ltr"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">{t('contact.form.businessName')}</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                      placeholder={t('contact.form.businessPlaceholder')}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">{t('contact.form.subject')}</label>
-                    <select
-                      className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none"
-                    >
-                      <option value="">{t('contact.form.selectTopic')}</option>
-                      <option value="audit">{t('contact.form.topicDiagnosis')}</option>
-                      <option value="automation">{t('contact.form.topicAutomation')}</option>
-                      <option value="chatbot">{t('contact.form.topicChatbot')}</option>
-                      <option value="web">{t('contact.form.topicWeb')}</option>
-                      <option value="support">{t('contact.form.topicSupport')}</option>
-                      <option value="other">{t('contact.form.topicOther')}</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">{t('contact.form.message')}</label>
-                    <textarea
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
-                      placeholder={t('contact.form.messagePlaceholder')}
-                    />
-                  </div>
-
-                  <button type="submit" className="glow-button w-full flex items-center justify-center gap-2">
-                    <Send className="w-5 h-5" />
-                    {t('contact.form.sendRequest')}
-                  </button>
-
-                  <p className="text-sm text-muted-foreground text-center">
-                    {t('contact.form.responseTime')}
-                  </p>
-                </form>
-              </GlassCard>
+              <ContactForm />
             </AnimatedSection>
           </div>
         </div>
