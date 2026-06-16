@@ -1,5 +1,6 @@
 import type { ValidatedLead } from "./lead-schema.js";
 import { renderLeadEmail } from "./lead-email-template.js";
+import { renderAdminNotification } from "./lead-notification-template.js";
 
 /**
  * Service categories sent by the form match the n8n AI agent's expected
@@ -40,6 +41,10 @@ export interface N8nLeadPayload {
   //   message ← `$json.body.email_html_prebuilt`
   email_subject_prebuilt: string;
   email_html_prebuilt: string;
+  // Internal notification — for a SECOND Gmail node in n8n that sends the
+  // alert to the Zyflows admin inbox (not the lead). Always in French.
+  admin_subject: string;
+  admin_html: string;
 }
 
 /**
@@ -65,6 +70,7 @@ export function buildN8nPayload(lead: ValidatedLead): N8nLeadPayload {
   ].join("\n");
 
   const email = renderLeadEmail(lead);
+  const admin = renderAdminNotification(lead);
 
   return {
     name: lead.name,
@@ -77,5 +83,7 @@ export function buildN8nPayload(lead: ValidatedLead): N8nLeadPayload {
     language_hint: languageHint,
     email_subject_prebuilt: email.subject,
     email_html_prebuilt: email.html,
+    admin_subject: admin.subject,
+    admin_html: admin.html,
   };
 }

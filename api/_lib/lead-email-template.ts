@@ -1,4 +1,4 @@
-import type { ValidatedLead } from "./lead-schema";
+import type { ValidatedLead } from "./lead-schema.js";
 
 /**
  * Renders the confirmation email sent to a lead after they submit the
