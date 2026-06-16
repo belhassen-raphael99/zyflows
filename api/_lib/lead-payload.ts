@@ -1,4 +1,5 @@
 import type { ValidatedLead } from "./lead-schema.js";
+import { renderLeadEmail } from "./lead-email-template.js";
 
 /**
  * Service categories sent by the form match the n8n AI agent's expected
@@ -31,6 +32,14 @@ export interface N8nLeadPayload {
   // Optional hints — picked up by the AI agent in the workflow.
   service_hint: string;
   language_hint: string;
+  // Pre-built confirmation email. The AI agent can either use these as-is
+  // (recommended — design is code-controlled) or fall back to its own
+  // generation if missing. Use these in n8n's Gmail node:
+  //   sendTo  ← `$json.body.email`
+  //   subject ← `$json.body.email_subject_prebuilt`
+  //   message ← `$json.body.email_html_prebuilt`
+  email_subject_prebuilt: string;
+  email_html_prebuilt: string;
 }
 
 /**
@@ -55,6 +64,8 @@ export function buildN8nPayload(lead: ValidatedLead): N8nLeadPayload {
     lead.message || "(pas de message — formulaire minimal)",
   ].join("\n");
 
+  const email = renderLeadEmail(lead);
+
   return {
     name: lead.name,
     email: lead.email,
@@ -64,5 +75,7 @@ export function buildN8nPayload(lead: ValidatedLead): N8nLeadPayload {
     source: "🌐 Site Web",
     service_hint: serviceHint,
     language_hint: languageHint,
+    email_subject_prebuilt: email.subject,
+    email_html_prebuilt: email.html,
   };
 }
