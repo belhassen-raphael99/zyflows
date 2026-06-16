@@ -1,4 +1,4 @@
-import type { ValidatedLead } from "./lead-schema";
+import type { ValidatedLead } from "./lead-schema.js";
 
 /**
  * Service categories sent by the form match the n8n AI agent's expected

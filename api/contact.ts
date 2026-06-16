@@ -3,8 +3,8 @@ import {
   isHoneypotTriggered,
   validate,
   type ContactFormPayload,
-} from "./_lib/lead-schema";
-import { buildN8nPayload } from "./_lib/lead-payload";
+} from "./_lib/lead-schema.js";
+import { buildN8nPayload } from "./_lib/lead-payload.js";
 
 const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL;
 
