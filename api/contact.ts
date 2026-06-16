@@ -1,17 +1,14 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { Resend } from "resend";
 import {
   isHoneypotTriggered,
   validate,
   type ContactFormPayload,
 } from "./_lib/lead-schema";
-import { formatLeadEmail } from "./_lib/lead-email";
+import { buildN8nPayload } from "./_lib/lead-payload";
 
-const TO_ADDRESS = process.env.LEAD_TO_EMAIL ?? "contact@zyflows.com";
-// Resend lets us send from `onboarding@resend.dev` without domain verification.
-// Switch to `leads@zyflows.com` once the domain is verified in Resend.
-const FROM_ADDRESS =
-  process.env.LEAD_FROM_EMAIL ?? "Zyflows Lead <onboarding@resend.dev>";
+const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL;
+// Outbound timeout — n8n agent runs OpenAI + Airtable + Gmail, takes time.
+const N8N_TIMEOUT_MS = 25_000;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
@@ -27,36 +24,44 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const result = validate(payload);
   if (!result.ok) {
-    return res.status(400).json({ ok: false, errors: result.errors });
+    return res.status(400).json({ ok: false, error: "validation", fields: result.errors });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.error("RESEND_API_KEY is not configured");
-    return res.status(500).json({ ok: false, error: "email_not_configured" });
+  if (!N8N_WEBHOOK_URL) {
+    console.error("N8N_WEBHOOK_URL is not configured");
+    return res.status(500).json({ ok: false, error: "webhook_not_configured" });
   }
 
-  const { subject, html, text } = formatLeadEmail(result.lead);
-  const resend = new Resend(apiKey);
+  const body = buildN8nPayload(result.lead);
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), N8N_TIMEOUT_MS);
 
   try {
-    const send = await resend.emails.send({
-      from: FROM_ADDRESS,
-      to: TO_ADDRESS,
-      replyTo: result.lead.email,
-      subject,
-      html,
-      text,
+    const response = await fetch(N8N_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      signal: controller.signal,
     });
 
-    if (send.error) {
-      console.error("Resend send error:", send.error);
-      return res.status(502).json({ ok: false, error: "email_send_failed" });
+    if (!response.ok) {
+      const text = await response.text().catch(() => "");
+      console.error("n8n webhook returned non-2xx:", response.status, text);
+      return res.status(502).json({ ok: false, error: "webhook_failed" });
     }
 
+    // n8n's Respond to Webhook returns { success, message, agent_response }.
+    // We don't surface agent_response — the form only needs success/failure.
     return res.status(200).json({ ok: true });
   } catch (error) {
-    console.error("Unexpected Resend error:", error);
+    if (error instanceof Error && error.name === "AbortError") {
+      console.error("n8n webhook timed out after", N8N_TIMEOUT_MS, "ms");
+      return res.status(504).json({ ok: false, error: "webhook_timeout" });
+    }
+    console.error("n8n webhook unexpected error:", error);
     return res.status(500).json({ ok: false, error: "unexpected" });
+  } finally {
+    clearTimeout(timeout);
   }
 }
