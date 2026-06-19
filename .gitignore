@@ -25,4 +25,6 @@ dist-ssr
 *.pyc
 __pycache__/
 studio-agent/projects/*.json
+studio-agent/projects/_active.txt
+studio-agent/projects/docs/
 studio-agent/.env
