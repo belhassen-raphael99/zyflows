@@ -266,7 +266,7 @@ def _notify_human(message: str, notification_type: str, requires_response: bool)
         title=f"[yellow]NOTIFICATION HUMAINE — {notification_type.upper()}[/yellow]",
         border_style="yellow",
     ))
-    if requires_response:
+    if requires_response and sys.stdin.isatty():
         response = Prompt.ask("Votre réponse (ou Entrée pour continuer)")
         return f"Réponse humaine: {response or '(aucune réponse)'}"
     return f"Notification envoyée: {message}"
